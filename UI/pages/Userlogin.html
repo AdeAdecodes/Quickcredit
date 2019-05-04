@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/UI/css/signin.dash.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png"
+    />
+    <title>Quickcredit | Dashboard</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png"
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+                <div class="header__user">
+                <a><img src="/UI/css/images/new-post.png"></a> 
+                  <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                      <div class="dropdown">
+                         <p class="dropbtn">Username
+                            <img src="/UI/css/images/icon.png" />
+                         </p>
+                             <div class="dropdown-content">
+                                 <a href="Accountinfo.html">Profile</a>
+                                 <a href="paymenthistory.html">Loan Payment</a>
+                                 <a href="calculateloan.html">Loan Application</a>
+                                 <a href="/UI/index.html">Logout</a>
+                                 </div>
+                         </div> 
+                </div>
+      </header>
+        <!-- End of title bar -->
+        <!-- Account boxes -->
+        <section id="accounts">
+                <div class="loan dashboard-card" id="VerifiedLender"> 
+                        <div>
+                            <h4>Total Loan Amount</h4>
+                            <p>₦12,660</p>
+                        </div>
+                    </div>  
+            <div class="loan dashboard-card" id="PendingLoan"> 
+                <div>
+                        <h4>Monthly Payment</h4>
+                        <p>₦1,055</p>
+                </div>
+            </div>            
+            <div class="loan dashboard-card" id="Total">
+                <div>
+                        <h4>Repayment Period</h4>
+                        <p>12 months</p>
+                </div> 
+            </div>
+            <div class="loan dashboard-card" id="LoanRepaid">
+                <div>
+                        <h4>Account Status</h4>
+                        <p>Active</p>
+                </div>
+            </div>
+            </div>            
+        </section>
+        <!-- End of Account boxes -->
+        <!-- Account table -->
+        <section id="box-tables">
+            <div class="full-table">
+                <h1>Loan Repayment History</h1>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Date</th>
+                            <th>Amount paid (₦)</th>
+                            <th>Payment Status</th>
+                            <th>Mode of payment</th>
+                        </tr>
+                        <tr>
+                            <td>001</td>
+                            <td>29-Jan-2019</td>
+                            <td>1,055</td>
+                            <td>Approved</td>
+                            <td>Bank Transfer</td>
+                        </tr>
+                        <tr>
+                                <td>002</td>
+                                <td>28-Feb-2019</td>
+                                <td>1,055</td>
+                                <td>Approved</td>
+                                <td>Bank Transfer</td>
+                        </tr>
+                        <tr>
+                                <td>003</td>
+                                <td>29-Mar-2019</td>
+                                <td>1,055</td>
+                                <td>Approved</td>
+                                <td>By card</td>
+                        </tr>
+                        <tr>
+                                <td>004</td>
+                                <td>28-Apr-2019</td>
+                                <td>1,055</td>
+                                <td>Approved</td>
+                                <td>Bank Transfer</td>
+                        </tr>
+                        <tr>
+                                <td>005</td>
+                                <td>29-May-2019</td>
+                                <td>1,055</td>
+                                <td>Unapproved</td>
+                                <td>USSD</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!-- End of Account table -->
+        <!-- Footer -->
+        <div class="footer">
+                <p>Copyright &copy; 2019 Quickcredit</p>
+              </div>
+        <!-- End of footer -->
+    <div>
+</body>
+</html>
