@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Loan Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/UI/css/calculateloan.css" />
+    <link
+    rel="shortcut icon"
+    type="image/x-icon"
+    href="/UI/css/images/cash-in-hand.png"
+  />
+  <title>Quickcredit | loan Application</title>
+</head>
+<body>
+  <div class="main-container">
+    <header class="header">
+      <a class="logo" href="/UI/index.html">
+        <span id="logo-icon">
+          <img
+            src="/UI/css/images/cash-in-hand.png"
+          />
+        </span>
+        <h2>Quickcredit</h2>
+      </a>
+              <div class="header__user">
+                <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                    <div class="dropdown">
+                       <p class="dropbtn">Username
+                          <img src="/UI/css/images/icon.png" />
+                       </p>
+                           <div class="dropdown-content">
+                               <a href="Accountinfo.html">Profile</a>
+                               <a href="Userlogin.html">Dashboard</a>
+                               <a href="paymenthistory.html">Loan Payment</a>
+                               <a href="/UI/index.html">Logout</a>
+                               </div>
+                       </div> 
+              </div>
+    </header>
+
+    <div class="container">
+      <h1>Loan Application</h1>
+      <div class="row">
+        <div class="col col-main">
+          <label for="amount" class="label">Choose Loan Amount</label>
+          <div class="input-wrapper">
+            <span class="input-addon">₦</span>
+            <input
+              id="amount"
+              class="input-field"
+              type="text"
+              value="100,000"
+            />
+          </div>
+          <label for="years" class="label">Repayment period</label>
+          <div class="input-wrapper">
+            <input id="months" class="input-field" type="text" value="6" max=""/>
+            <span class="input-addon">months</span>
+          </div>
+          <label for="apr" class="label">Annual interest rate</label>
+          <div class="input-wrapper">
+            <input id="interest" class="input-field" type="hidden" value="10" />
+            <span class="input-addon"
+              >Quickcredit interest rate will be added</span
+            >
+          </div>
+
+          <button onclick="calculate();">Calculate</button>
+        </div>
+        <div class="col">
+          <h2>Payments</h2>
+          <div class="output-wrapper">
+            <p class="label">Monthly payment</p>
+            <p class="output-value">₦<span id="payment"></span></p>
+          </div>
+          <div class="output-wrapper">
+            <p class="label">Total payments</p>
+            <p class="output-value">₦<span id="total"></span></p>
+          </div>
+          <div class="output-wrapper">
+            <p class="label">Total interest payments</p>
+            <p class="output-value">₦<span id="totalinterest"></span></p>
+          </div>
+          <a href="signup.html"><button onclick="">Apply for loan</button></a> 
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>Copyright &copy; 2019 Quickcredit</p>
+    </footer>
+    <script src="/UI/js/main.js"></script>
+  </body>
+</html>
