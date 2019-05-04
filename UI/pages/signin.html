@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/UI/css/signin.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/UI/css/images/cash-in-hand.png" />
+    <title>Quickcredit | Login</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img src="/UI/css/images/cash-in-hand.png" />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+         <div class="register">
+          <a class="signup" href="signup.html">Sign up</a>
+          <a class="signin" href="Admin.html">Admin</a>
+         </div>
+     </header>
+     <main class="content-container">
+        <div class="form-container" id="form">
+          <h2>Login</h2>
+          <form action="" class="form-content">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+
+            <a href="reset.html">
+              <p id="resetPassword">Forgot My Password!</p>
+            </a>
+
+            <p id="wrongInput"></p>
+
+            <div class="clearfix">
+              <a href="Userlogin.html">
+                <button
+                  type="button"
+                  class="createbtn"
+                  onclick="formValidator()"
+                >
+                  Login
+                </button>
+              </a>
+              <button type="button" class="cancelbtn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <div class="footer">
+        <p>Copyright &copy; 2019 Quickcredit</p>
+      </div>
+    </div>
+    <script src="/Quickcredit/UI/js/main.js"></script>
+  </body>
+</html>
