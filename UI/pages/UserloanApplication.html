@@ -1,0 +1,143 @@
+  <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/UI/css/signin.dash.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png"
+    />
+    <title>Quickcredit | loanrequest</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png"
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+                <div class="header__user">
+                  <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                      <div class="dropdown">
+                         <p class="dropbtn">Administrator
+                            <img src="/UI/css/images/icon.png" />
+                         </p>
+                             <div class="dropdown-content">
+                                 <a href="Verifyuser.html">Verify User information</a>
+                                 <a href="loanpaymenthistory.html">View payment history</a>
+                                 <a href="Dashboardadmin.html">Return to Dashboard</a>
+                                 </div>
+                                 </div>
+                         </div> 
+      </header>
+        <!-- End of title bar -->
+        <!-- Account boxes -->
+        <section id="accounts">
+                <div class="loan dashboard-card" id="VerifiedLender"> 
+                        <div>
+                            <h4>Total Loan Request</h4>
+                            <p>₦12,660</p>
+                        </div>
+                    </div>  
+            <div class="loan dashboard-card" id="PendingLoan"> 
+                <div>
+                    <h4>Repayment period</h4>
+                    <p>12 months</p>
+                </div>
+            </div>            
+            <div class="loan dashboard-card" id="LoanRepaid">
+                <div>
+                        <h4>Credit score</h4>
+                        <p>Good</p>
+                </div> 
+            </div>
+            <div class="loan dashboard-card" id="LoanRepaid">
+                    <div>
+                        <h4>Account Status</h4>
+                        <p>Active</p>
+                    </div>
+                </div>       
+        </section>
+        <!-- End of Account boxes -->
+        <!-- Account table -->
+            <section id="box-tables">
+                <div class="full-table">
+                    <h1>Pending Loan Application</h1>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Loan ID</th>
+                                <th>Date Created</th>
+                                <th>Account Number</th>
+                                <th>Bank Name</th>
+                                <th>Account Status</th>
+                                <th>Period(months)</th>
+                                <th>Loan Request Amount (₦)</th>
+                                <th>Check Loan Eligibity</th>
+                                <th>Approve Loan</th>
+                                <th>Reject Loan</th>
+                            </tr>
+                            <tr>
+                                <td>001</td>
+                                <td>19-Apr-2019</td>
+                                <td>001-663-3720</td>
+                                <td>First Bank</td>
+                                <td>Pending</td>
+                                <td>12 months</td>
+                                <td>₦12,660</td>
+                                <td><button class="button_secondary"><a href="#">Credit Worthiness</a></button></td>
+                                <td><button class="button_success" id="Approveloan"><a href="#">Approve</a></button></td>
+                                <td><button class="button_danger" id="Rejectloan"><a href="#">Reject</a></button></td>
+                            </tr>
+                        </table>
+                    </div>
+            </section>
+            <div id="Reject-loan">
+                <div class="modal-box">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Confirmation</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to reject this loan?</p>
+                        </div>                    
+                        <div class="modal-footer">
+                            <button class="button_success" id='positiveReject'><a href="#">Yes</a></button>
+                            <button class="button_danger" id='negativeReject'><a href="#">No</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Approve-loan">
+                <div class="modal-box">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Confirmation</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to approve this loan?</p>
+                        </div>                    
+                        <div class="modal-footer">
+                            <button class="button_success" id='positiveApprove'>Yes</a></button>
+                            <button class="button_danger" id='negativeApprove'><a href="#">No</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+                <p>Copyright &copy; 2019 Quickcredit</p>
+              </div>
+        <!-- End of footer -->
+    <div>
+            <script src="/UI/js/main.js"></script>
+</body>
+</html>
