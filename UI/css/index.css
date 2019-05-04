@@ -1,0 +1,327 @@
+body {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", Helvetica, sans-serif;
+}
+@media (min-width: 700px) {
+  a {
+    text-decoration: none;
+    color: none;
+  }
+  .header .split {
+    height: 60px;
+    width: 50%;
+    position: absolute;
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .header .left {
+    left: 0;
+    background-color: #dfe7fd;
+  }
+
+  .header .right {
+    right: 0;
+    background-color: #36405e;
+  }
+  .header {
+    display: flex;
+    height: 60px;
+    top: 0;
+    z-index: 10;
+    position: sticky;
+  }
+  .logo {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    color: #36405e;
+    margin-left: 63px;
+  }
+  .logo h2 {
+    margin: -40px 0 0 50px;
+    color: #36405e;
+  }
+  .register {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px;
+  }
+  .register a {
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    padding: 2px;
+    margin-right: 55px;
+    border: 0.5px solid #dfe7fd;
+    color: #dfe7fd;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+  }
+  .register .signup {
+    background-color: #dfe7fd;
+    color: #36405e;
+    margin-right: 10px;
+
+  }
+  
+  .register a:hover {
+    background-color: #dfe7fd;
+    color: #36405e;
+  }
+  #content {
+    z-index: 1;
+  }
+  main {
+    clear: both;
+    background-position: center;
+    height: 400px;
+    background-size: cover;
+    color: rgb(8, 8, 8);
+    border-bottom: 5px solid #36405e;
+  }
+
+  main .split {
+    height: 490px;
+    width: 50%;
+    position: absolute;
+    overflow: hidden;
+    padding-top: 20px;
+  }
+
+  main .left {
+    left: 0;
+    background-color: #dfe7fd;
+  }
+
+  main .right {
+    right: 0;
+    background-image: url("images/home 222.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  main .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .content {
+    width: 450px;
+    text-align: justify;
+  }
+
+  main h2 {
+    color: #36405e;
+    font-family: "Lato", Helvetica, sans-serif;
+    line-height: 1.5;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+  }
+  main button {
+    background: transparent;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 5px;
+    margin-top: 10px;
+    width: 200px;
+    height: 52px;
+    background: #dfe7fd;
+    color: #36405e;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    font-family: "Lato", Helvetica, sans-serif;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 0.5px solid #36405e;
+  }
+  main button:hover {
+    background: #36405e;
+    color: #ffffff;
+  }
+  .grid {
+    background: #ffffff;
+    color: #36405e;
+    text-align: center;
+  }
+  .box {
+    margin-top: 20px;
+    float: left;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    margin-left: 1%;
+  }
+  section {
+    margin-top: 140px;
+    margin-bottom: 450px;
+  }
+  section span {
+    font-size: 1.2em;
+  }
+  .footer {
+    grid-column: span 13;
+    grid-row: 1;
+    height: 60px;
+    position: sticky;
+    background: #36405e;
+    border: 3px solid #36405e;
+  }
+  .footer p {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #dfe7fd;
+  }
+}
+@media (max-width: 700px) {
+  a {
+    text-decoration: none;
+  }
+  .header {
+    display: flex;
+    background: #36405e;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    height: 60px;
+    position: sticky;
+  }
+  .header .logo {
+    display: flex;
+    height: inherit;
+    width: 50%;
+    font-size: 50%;
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  .header h2 {
+    color: #dfe7fd;
+    margin-top: -24px;
+    margin-left: 30px;
+  }
+  .header img {
+    margin-top: 5px;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+  }
+  .register {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .register a {
+    cursor: pointer;
+    margin: 8px;
+    text-align: center;
+    width: 90px;
+    height: 30px;
+    border: 0.5px solid #dfe7fd;
+    color: #dfe7fd;
+    font: 15.5px/1.5 "Lato", Helvetica, sans-serif;
+  }
+  .register .signup {
+    background-color: #dfe7fd;
+    color: #36405e;
+    margin-left: 60px;
+  }
+  #content {
+    z-index: 1;
+  }
+  main {
+    background-image: url("images/home 222.jpg");
+    color: rgb(8, 8, 8);
+    height: 550px;
+    overflow-x: hidden;
+    clear: both;
+    background-position: center;
+    background-size: cover;
+  }
+  .content {
+    background: rgba(246, 244, 255, 0.891);
+    -moz-box-shadow: 0 0 0 0px rgba(246, 244, 255, 0.891);
+    -webkit-box-shadow: 0 0 0 0px rgba(246, 244, 255, 0.891);
+    box-shadow: 0 0 0 0px rgba(246, 244, 255, 0.891);
+    text-align: justify;
+    width: 300px;
+    margin: 250px 50px 0px 10px;
+    padding: 20px;
+    text-align: justify;
+  }
+  .content h2 {
+    color: #36405e;
+    font-weight: 700;
+  }
+  main h2 {
+    color: #ffffff;
+    font-family: "Lato", Helvetica, sans-serif;
+    line-height: 30px;
+    font-size: 2.0ex;
+    margin-bottom: 5px;
+  }
+  main button {
+    background: transparent;
+    max-width: 200px;
+    height: 38px;
+    padding: 5px;
+    background: rgba(246, 244, 255, 0.891);
+    color: #36405e;
+    font-size: 15px;
+    font-family: "Lato", Helvetica, sans-serif;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 0.5px solid #36405e;
+    cursor: pointer;
+  }
+  main button:hover {
+    background: #484f65;
+    color: #ffffff;
+  }
+  section {
+    margin-bottom: 10px;
+    margin-top: 60px;
+  }
+  section span {
+    font-size: 1.5em;
+    margin-top: 40px;
+  }
+  .grid {
+    background: #ffffff;
+    color: #36405e;
+    text-align: center;
+  }
+  .box {
+    float: none;
+    text-align: center;
+    width: 70%;
+    margin-left: 40px;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .footer {
+    grid-column: span 13;
+    grid-row: 1;
+    height: 60px;
+    position: sticky;
+    background: #36405e;
+    border: 3px solid #36405e;
+  }
+  .footer p {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #ffff;
+  }
+}
