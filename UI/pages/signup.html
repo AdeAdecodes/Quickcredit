@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/UI/css/signup.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png" 
+    />
+    <title>Quickcredit | Sign Up</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png" 
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+
+        <div class="register">
+          <a class="signin" href="./signin.html">Login</a>
+        </div>
+      </header>
+      <div class="container">
+        <h1>Sign Up</h1>
+        <form class="form">
+          <div>
+            <input
+              id="First-Name"
+              type="text"
+              placeholder="First Name"
+              required
+            />
+            <input
+              id="Last-Name"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              id="Home-Address"
+              type="text"
+              placeholder="Home Address"
+              required
+            />
+            <input
+              id="Work-Address"
+              type="text"
+              placeholder="Work Address"
+              required
+            />
+            <input
+              id="Phone-Number"
+              type="number "
+              placeholder="Phone Number"
+              required
+            />
+            <input id="email" type="email" placeholder="Email" required />
+            <input
+              id="password"
+              minlength="6"
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button id="Button">Sign up</button>
+          <p id="wrongInput"></p>
+          <p>
+            Already registered? <a href="signin.html">Click here to login</a>
+          </p>
+        </form>
+      </div>
+      <div class="footer">
+        <p>Copyright &copy; 2019 Quickcredit</p>
+      </div>
+    </div>
+  </body>
+</html>

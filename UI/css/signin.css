@@ -1,0 +1,366 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", Helvetica, sans-serif;
+  background: #dfe7fd;
+  height: 100%;
+}
+@media (min-width: 760px) {
+  a {
+    text-decoration: none;
+  }
+  .main-container {
+    background: #36405e;
+    min-height: 670px;
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    background: #dfe7fd;
+    height: 60px;
+    position: sticky;
+    border-bottom: 1px solid#dfe7fd;
+  }
+
+  .header .logo {
+    display: flex;
+    width: 11%;
+    height: inherit;
+    margin-left: 10px;
+    color: #36405e;
+    margin-top: 5px;
+  }
+  .logo h2 {
+    margin: 10px 0 0 0;
+    color: #36405e;
+  }
+
+  .register {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px;
+  }
+  .register a {
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+    margin-right: 15px;
+    border: 0.5px solid #36405e;
+    color: #36405e;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+  }
+  .register a:hover {
+    background-color: #36405e;
+    color: #fdfeff;
+  }
+  .register .signup {
+    background-color: #36405e;
+    color: #dfe7fd;
+  }
+  .form-container h2 {
+    text-align: center;
+    color: #36405e;
+  }
+
+  .footer {
+    width: 100%;
+    margin-top: 40px;
+    height: 60px;
+  }
+
+  .footer p {
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #dfe7fd;
+    color: #36405e;
+  }
+
+  /* Form styling  */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 80%;
+    padding: 15px;
+    margin: 5px 0 22px 40px;
+    display: inline-block;
+    border: none;
+    background: #ffff;
+    border: 1px solid #ffff;
+    font-family: "Arial";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: justify;
+    letter-spacing: 1px;
+    font-family: "Arial";
+  }
+
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  button {
+    color: #36405e;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border: 0.5px solid #36405e;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+  }
+
+  button:hover {
+    opacity: 1;
+  }
+
+  .cancelbtn:hover {
+    padding: 14px 20px;
+    background-color: #f44336;
+  }
+  .createbtn:hover {
+    background-color: #36405e;
+    color: #fdfeff;
+  }
+  .cancelbtn,
+  .createbtn {
+    float: left;
+    width: 40%;
+    margin: 19.5px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .form-container {
+    margin: 75px auto;
+    overflow: hidden;
+    max-width: 450px;
+    max-height: 450px;
+    padding-top: 20px;
+    overflow: hidden;
+    background-color: #dfe7fd;
+    font-family: "Arial";
+  }
+
+  /* Form Content/Box */
+
+  .form-content {
+    background-color: #dfe7fd;
+    margin: 3% auto 15% auto;
+    width: 100%;
+    top: 0px;
+  }
+
+  .form-content label {
+    padding: 50px;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+
+  /* Clear floats */
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  #resetPassword {
+    color: #36405e;
+    font-size: 15px;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  #wrongInput {
+    color: rgb(233, 78, 78);
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  a {
+    text-decoration: none;
+  }
+  .main-container {
+    background: #36405e;
+    min-height: 670px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .header {
+    display: flex;
+    height: 60px;
+    top: 0;
+    z-index: 10;
+    position: sticky;
+    background: #dfe7fd;
+  }
+
+  .header .logo {
+    display: flex;
+    width: 11%;
+    height: inherit;
+    font-size: 60%;
+    color: #36405e;
+  }
+  .header h2 {
+    margin-top: 20px;
+  }
+  .register {
+    display: flex;
+    margin-left: 32%;
+  }
+
+  .register a {
+    cursor: pointer;
+    margin: 17px;
+    padding: 5px;
+    height: 30px;
+    border: 0.5px solid #36405e;
+    color: #36405e;
+    font: 15.5px/1.5 "Lato", Helvetica, sans-serif;
+  }
+  .register a:hover {
+    background-color: #36405e;
+    color: #fdfeff;
+  }
+  .register .signup {
+    background-color: #36405e;
+    color: #dfe7fd;
+  }
+  .content-container {
+    margin-bottom: 140px;
+  }
+  .form-container h2 {
+    text-align: center;
+    color: #dfe7fd;
+  }
+
+  .footer p {
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  /* Form styling  */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    margin: 8% auto;
+    padding: 15px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 10px;
+    text-align: justify;
+    letter-spacing: 1px;
+    background-color: #dfe7fd;
+  }
+
+  button {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    color: #36405e;
+    border: 1px solid #36405e;
+    background-color: #dfe7fd;
+  }
+  .createbtn {
+    float: left;
+    margin-left: 10px;
+    width: 40%;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .cancelbtn {
+    float: right;
+    margin-right: 10px;
+    width: 40%;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .cancelbtn:hover {
+    color: #000;
+    background-color: #f44336;
+  }
+  .createbtn:hover {
+    background-color: #36405e;
+    color: #fdfeff;
+  }
+  .form-container {
+    margin: 45px auto;
+    overflow: hidden;
+    max-width: 300px;
+    max-height: 450px;
+    padding-top: 20px;
+    overflow: hidden;
+    background-color: #36405e;
+    font-family: "Arial";
+  }
+
+  /* Form Content/Box */
+
+  .form-content {
+    background-color: #36405e;
+    margin: 3% auto 15% auto;
+    width: 100%;
+    top: 0px;
+  }
+
+  .form-content label {
+    padding: 50px;
+  }
+  /* Clear floats */
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  #resetPassword {
+    color: #dfe7fd;
+    font-size: 15px;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  #wrongInput {
+    color: rgb(233, 78, 78);
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+  }
+  .footer {
+    padding: 10px;
+    font-weight: bolder;
+    background-color: #dfe7fd;
+  }
+}
