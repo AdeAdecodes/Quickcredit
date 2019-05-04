@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/UI/css/signin.dash.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png"
+    />
+    <title>Quickcredit | Verify User</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png"
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+                <div class="header__user">
+                  <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                      <div class="dropdown">
+                         <p class="dropbtn">Administrator
+                            <img src="/UI/css/images/icon.png" />
+                         </p>
+                             <div class="dropdown-content">
+                                    <a href="UserloanApplication.html">View Loan Application</a>
+                                    <a href="loanpaymenthistory.html">View payment history</a>
+                                    <a href="Dashboardadmin.html">Return to Dashboard</a>
+                                 </div>
+                         </div> 
+                </div>
+      </header>
+        <!-- End of title bar -->
+        <!-- Credit and Debit form -->
+        <section id='Theform-box'>
+                <form>                
+                    <h1>Profile Details</h1>
+                    <div class='full-table table-bold-start'>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>Date</td><td>23-Mar-2019</td>
+                                </tr>
+                                <tr>
+                                    <td>First Name</td><td>jimi</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name</td><td>Agbaje</td>
+                                </tr>
+                                <tr>
+                                    <td>Home address</td><td>Yaba</td>
+                                </tr>
+                                <tr> 
+                                        <td> Utility Bill</td><td><a href="Capture.PNG">Click to view</a></td>
+                                </tr>
+                                <tr>
+                                        <td>Work Address</td><td>Victoria Island</td>
+                                </tr>
+                                <tr>
+                                    <td>Company website</td><td>Andela.com</td>
+                                </tr>
+                                <tr>
+                                        <td> <button class="button_success" id="Approveloan">Verify</button></td><td><button class="button_danger" id="Rejectloan">Block</button></td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+        </section>
+                <div id="Approve-loan">
+                        <div class="modal-box">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>Confirmation</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to verify this user?</p>
+                                </div>                
+                                <div class="modal-footer">
+                                    <button class="button_success" id='positiveApprove'><a href="">Yes</a></button>
+                                    <button class="button_danger" id='negativeApprove'><a href="#">No</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Reject-loan">
+                        <div class="modal-box">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>Confirmation</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to block this user?</p>
+                                </div>                    
+                                <div class="modal-footer">
+                                    <button class="button_success" id='positiveReject'><a href="#">Yes</a></button>
+                                    <button class="button_danger" id='negativeReject'><a href="#">No</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!-- End of credit and debit form -->
+        <!-- Footer -->
+        <div class="footer">
+                <p>Copyright &copy; 2019 Quickcredit</p> 
+              </div>
+        <!-- End of footer -->
+        <script src="/UI/js/main.js"></script>
+</body>
+</html>
