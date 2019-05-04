@@ -1,0 +1,725 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", Helvetica, sans-serif;
+  background: #36405e;
+  height: 100%;
+}
+@media (min-width: 760px) {
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  .main-container {
+    background: #36405e;
+  }
+
+  .header {
+    display: flex;
+    background: #dfe7fd;
+    height: 60px;
+    position: sticky;
+    border-bottom: 1px solid#dfe7fd;
+  }
+
+  .header .logo {
+    display: flex;
+    width: 11%;
+    height: inherit;
+    margin-left: 10px;
+    color: #36405e;
+    margin-top: 5px;
+  }
+  .logo h2 {
+    margin: 10px 0 0 0;
+    color: #36405e;
+  }
+  .header__user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 50px;
+  }
+  .header__user a {
+    margin-right: 30px;
+  }
+  .user__image {
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .dropdown .dropbtn {
+    padding: 14px 16px;
+    font-family: inherit;
+    margin-top: 15px;
+    color: #36405e;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #36405e;
+    color: #fff;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 5%;
+    max-width: 120px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 6px 0 5px 5px;
+    text-decoration: none;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid #36405e;
+  }
+
+  .dropdown-content a:hover {
+    color: #0a7acf;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /*Button*/
+  .button_primary,
+  .button_secondary,
+  .button_success,
+  .button_danger {
+    margin: 5px 0;
+    height: 33px;
+    background: #36405e;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #dfe7fd;
+  }
+
+  .button_secondary {
+    background: #2298f1;
+  }
+
+  .button_success {
+    background: #5fba7d;
+    width: 105px;
+  }
+
+  .button_danger {
+    background: #d65b4a;
+    width: 105px;
+  }
+  /* Accounts */
+  #accounts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+    padding: 4em;
+  }
+
+  .box-table #accounts {
+    grid-area: accounts;
+  }
+
+  .loan {
+    padding: 15px;
+    height: 200px;
+    background: #dfe7fd;
+  }
+
+  .loan.dashboard-card {
+    height: 100px;
+    width: 75%;
+  }
+
+  .loan h4 {
+    margin: 0;
+  }
+
+  .loan p {
+    margin: 0;
+    margin-bottom: 5px;
+    color: #36405e;
+  }
+
+  .loan.dashboard-card p {
+    font: 30px/3.5 "Lato", Helvetica, sans-serif;
+  }
+
+  .loan .add-account {
+    height: 100%;
+    justify-items: center;
+    text-align: center;
+    color: #000000;
+  }
+  #VerifiedLender.loan {
+    border: 4px solid #2298f1;
+  }
+  #PendingLoan.loan {
+    border: 4px solid #da932c;
+  }
+  #LoanRepaid.loan {
+    border: 4px solid #66b92e;
+  }
+  #LoanUnpaid.loan {
+    border: 4px solid #d65b4a;
+  }
+  #Total.loan {
+    border: 4px solid #f56e14;
+  }
+  #credit.loan {
+    background: #36405e;
+  }
+  /* Table */
+  #box-tables {
+    grid-area: table;
+    padding: 0 4em;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .full-table {
+    margin: 1px;
+    grid-column: 1/5;
+    border: 4px solid rgb(251, 232, 232);
+    padding: 40px;
+    background-color: #dfe7fd;
+  }
+
+  .full-table div {
+    overflow-x: auto;
+  }
+
+  .full-table h1,
+  .full-table table tr td {
+    font-weight: 100;
+  }
+
+  .full-table table {
+    background-color: #36405e;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #dfe7fd;
+  }
+
+  .full-table table img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .full-table table tr td,
+  .full-table table tr th {
+    text-align: left;
+    padding: 4px;
+    border-left: 1px solid #000;
+  }
+
+  .full-table table tr:nth-child(even) {
+    background: #f4f4f4;
+    color: #36405e;
+  }
+  .full-table table tr:nth-child(even) .full-table table tr th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left: 1px solid #000;
+  }
+
+  .full-table table tr td:first-child,
+  .full-table table tr th:first-child {
+    text-align: center;
+  }
+
+  .full-table.table-bold-start tr td:first-child {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 30px;
+  }
+
+  .full-table.table-bold-start tr td {
+    padding: 5px;
+  }
+  #Theform-box h1,
+  #Theform-box a {
+    color: #dfe7fd;
+    text-align: center;
+  }
+  #Theform-box .full-table {
+    grid-column: 1/5;
+    border: 4px solid #36405e;
+    background-color: #dfe7fd;
+    width: 50%;
+    margin-left: 240px;
+  }
+  /* Modal boxes */
+  .modal-box {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    padding: 15px;
+    margin: auto;
+    max-height: 20%;
+    background-color: #f4f4f4;
+  }
+
+  .modal-header {
+    border-bottom: 1px solid #36405e;
+  }
+
+  .modal-header h3 {
+    margin: 0;
+  }
+
+  #Reject-loan,
+  #Approve-loan,
+  #activate-account,
+  #deactivate-account {
+    display: none;
+  }
+  .payment-section {
+    width: 50%;
+    background-color: #dfe7fd;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    margin-left: 25%;
+    margin-top: 20px;
+  }
+  .payment-section h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #434343;
+  }
+  .small-border {
+    border: 1px solid #c9c9c9;
+    width: 35px;
+  }
+
+  .payment {
+    color: #dfe7fd;
+    font-size: 15px;
+    background-color: #36405e;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    min-width: 150px;
+    padding: 16px 15px;
+    justify-content: center;
+  }
+  .payment .img {
+    width: 30px;
+    margin-right: 8px;
+  }
+  .payment-method {
+    display: flex;
+  }
+  .payment-section #dropdown {
+    margin-top: 30px;
+    width: 50%;
+  }
+  .payment-section p {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #434343;
+  }
+  .payment-section .input {
+    border: 1px solid #e1e1e1;
+    width: 80%;
+    border-radius: 2px;
+    height: 40px;
+  }
+  .footer {
+    width: 100%;
+    margin-top: 40px;
+    height: 60px;
+  }
+
+  .footer p {
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #dfe7fd;
+    color: #36405e;
+  }
+}
+
+@media (max-width: 700px) {
+  a {
+    text-decoration: none;
+  }
+  .main-container {
+    background: #36405e;
+    min-height: 670px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .header {
+    display: flex;
+    height: 60px;
+    top: 0;
+    z-index: 10;
+    position: sticky;
+    background: #dfe7fd;
+  }
+
+  .header .logo {
+    display: flex;
+    width: 11%;
+    height: inherit;
+    font-size: 50%;
+    color: #36405e;
+  }
+  .header h2 {
+    margin-top: 20px;
+  }
+  .header__user {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .user__image {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  .dropdown .dropbtn {
+    padding: 16px 10px;
+    font-family: inherit;
+    margin-left: 5px;
+    color: #36405e;
+    font: 10px/1.5 "Lato", Helvetica, sans-serif;
+  }
+
+  .dropdown:hover .dropbtn {
+    background-color: #36405e;
+    color: #fff;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius: 5%;
+    width: 80px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 6px 0 5px 5px;
+    text-decoration: none;
+    font: 15px/1.5 "Lato", Helvetica, sans-serif;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid #36405e;
+  }
+
+  .dropdown-content a:hover {
+    color: #0a7acf;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /*Button*/
+  .button_primary,
+  .button_secondary,
+  .button_success,
+  .button_danger {
+    margin: 5px 0;
+    height: 33px;
+    background: #36405e;
+    border: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #dfe7fd;
+  }
+
+  .button_secondary {
+    background: #2298f1;
+  }
+
+  .button_success {
+    background: #5fba7d;
+    width: 105px;
+  }
+
+  .button_danger {
+    background: #d65b4a;
+    width: 105px;
+  }
+  /* Accounts */
+  #accounts {
+    display: grid;
+    grid-gap: 1em;
+    padding: 4em;
+  }
+
+  .box-table #accounts {
+    grid-area: accounts;
+  }
+
+  .loan {
+    padding: 15px;
+    height: 200px;
+    background: #dfe7fd;
+  }
+
+  .loan.dashboard-card {
+    height: 150px;
+    width: 100%;
+  }
+
+  .loan h4 {
+    margin: 0;
+  }
+
+  .loan p {
+    margin: 0;
+    margin-bottom: 5px;
+    color: #36405e;
+  }
+
+  .loan.dashboard-card p {
+    font: 30px/3.5 "Lato", Helvetica, sans-serif;
+  }
+
+  .loan .add-account {
+    height: 100%;
+    justify-items: center;
+    text-align: center;
+    color: #000000;
+  }
+  #VerifiedLender.loan {
+    border: 4px solid #2298f1;
+  }
+  #PendingLoan.loan {
+    border: 4px solid #da932c;
+  }
+  #LoanRepaid.loan {
+    border: 4px solid #66b92e;
+  }
+  #LoanUnpaid.loan {
+    border: 4px solid #d65b4a;
+  }
+  #Total.loan {
+    border: 4px solid #f56e14;
+  }
+  #credit.loan {
+    background: #36405e;
+  }
+  /* Table */
+  #box-tables {
+    grid-area: table;
+    margin-bottom: 30px;
+    padding: 10px;
+    margin-top: 30px;
+  }
+
+  .full-table {
+    margin: 1px;
+    grid-column: 1/5;
+    border: 4px solid rgb(251, 232, 232);
+    padding: 10px;
+    background-color: #dfe7fd;
+  }
+
+  .full-table div {
+    overflow-x: auto;
+  }
+
+  .full-table h1,
+  .full-table table tr td {
+    font-weight: 100;
+  }
+
+  .full-table table {
+    background-color: #36405e;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #dfe7fd;
+  }
+
+  .full-table table img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .full-table table tr td,
+  .full-table table tr th {
+    text-align: left;
+    padding: 4px;
+    border-left: 1px solid #000;
+  }
+
+  .full-table table tr:nth-child(even) {
+    background: #f4f4f4;
+    color: #36405e;
+  }
+  .full-table table tr:nth-child(even) .full-table table tr th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left: 1px solid #000;
+  }
+
+  .full-table table tr td:first-child,
+  .full-table table tr th:first-child {
+    text-align: center;
+  }
+
+  .full-table.table-bold-start tr td:first-child {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 30px;
+  }
+
+  .full-table.table-bold-start tr td {
+    padding: 5px;
+  }
+  #Theform-box h1,
+  #Theform-box a {
+    color: #dfe7fd;
+    text-align: center;
+  }
+  #Theform-box .full-table {
+    border: 4px solid #36405e;
+    background-color: #dfe7fd;
+    padding: 20px;
+    width: 100%;
+    margin-top: -600px;
+  }
+  .payment-section {
+    width: 80%;
+    background-color: #dfe7fd;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .payment-section h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #434343;
+  }
+  .small-border {
+    border: 1px solid #c9c9c9;
+    width: 35px;
+  }
+
+  .payment {
+    color: #dfe7fd;
+    font-size: 10px;
+    background-color: #36405e;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    width: 75px;
+    padding: 10px 9px;
+  }
+  .payment .img {
+    width: 30px;
+    margin-right: 8px;
+  }
+  .payment-method {
+    display: flex;
+  }
+  .payment-section #dropdown {
+    margin-top: 30px;
+    width: 50%;
+  }
+  .payment-section p {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #434343;
+  }
+  .payment-section .input {
+    border: 1px solid #e1e1e1;
+    width: 80%;
+    border-radius: 2px;
+    height: 40px;
+  }
+  /* Modal boxes */
+  .modal-box {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    padding: 15px;
+    margin: auto;
+    max-height: 20%;
+    background-color: #f4f4f4;
+  }
+
+  .modal-header {
+    border-bottom: 1px solid #36405e;
+  }
+
+  .modal-header h3 {
+    margin: 0;
+  }
+
+  #Reject-loan,
+  #Approve-loan,
+  #activate-account,
+  #deactivate-account {
+    display: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .footer {
+    padding: 10px;
+    font-weight: bolder;
+    background-color: #dfe7fd;
+  }
+  .footer p {
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+  }
+}
