@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/UI/css/signin.dash.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png"
+    />
+    <title>Quickcredit | loan payment history</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png"
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+                <div class="header__user">
+                  <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                      <div class="dropdown">
+                         <p class="dropbtn">Username
+                            <img src="/UI/css/images/icon.png" />
+                         </p>
+                             <div class="dropdown-content">
+                                <a href="Userlogin.html">Dashboard</a>
+                                 <a href="Accountinfo.html">Profile</a>
+                                 <a href="calculateloan.html">Loan Application</a>
+                                 <a href="/UI/index.html">Logout</a>
+                                 </div>
+                         </div> 
+                </div>
+      </header>
+        <!-- End of title bar -->
+        <div class="payment-section">
+            <h4>Select Payment Method</h4>
+            <div class="small-border"></div>
+            <div class="payment-method">
+              <div class="credit-card payment"><img class="img" src="/UI/css/images/credit-card.png" alt="">Credit Card</div>
+              <div class="bank payment"><img class="img" src="/UI/css/images/notes.png" alt="">Bank Transfer</div>
+              <div class="paypal payment"><img class="img" src="/UI/css/images/payment.png" alt="">Paystack</div>
+            </div>
+            <div class="card-name">
+              <p>NAME ON CARD</p>
+              <input type="text" class="input" name="cardname" placeholder="Adeogo Adejana">
+            </div>
+            <div class="card-number">
+               <p>CARD NUMBER</p>
+                <input type="text" class="input" name="cardnumber" placeholder="5399 8302 4455 6677">
+            </div>
+            <div class="card-info">
+               <p>Bank Name</p>
+              <input type="text" class="input" name="cardinfo" placeholder="Gtbank">
+            </div>
+            <div class="month">
+               <p>Month</p>
+              <input type="text" class="input" name="month" placeholder="07">
+            </div>
+            <div class="year">
+               <p>Year</p>
+              <input type="text" class="input" name="year" placeholder="2019">
+            </div>
+            <div class="cvv">
+               <p>CVV</p>
+               <input type="text" class="dropdown" name="CVV" placeholder="530">
+            </div>
+            <button class="button_secondary" id="dropdown">Pay</button>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+                <p>Copyright &copy; 2019 Quickcredit</p>
+              </div>
+        <!-- End of footer -->
+    <div>
+</body>
+</html>
