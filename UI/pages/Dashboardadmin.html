@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/UI/css/signin.dash.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/UI/css/images/cash-in-hand.png"
+    />
+    <title>Quickcredit | Dashboard</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header class="header">
+        <a class="logo" href="/UI/index.html">
+          <span id="logo-icon">
+            <img
+              src="/UI/css/images/cash-in-hand.png"
+            />
+          </span>
+          <h2>Quickcredit</h2>
+        </a>
+
+        <div class="header__user">
+                <a><img src="/UI/css/images/new-post.png"></a> 
+                <img class="user__image" src="/UI/css/images/home 222.jpg" alt="#0">
+                    <div class="dropdown">
+                       <p class="dropbtn">Admin
+                          <img src="/UI/css/images/icon.png" />
+                       </p>
+                           <div class="dropdown-content">
+                                <a href="loanpaymentadmin.html">Approve payment</a>
+                                <a href="report.html">Reports</a>
+                                <a href="createadmin.html">Create Administrator</a>
+                                <a href="/UI/index.html">Logout</a>
+                               </div>
+                       </div> 
+              </div>
+      </header>
+      <section id="accounts">         
+          <div class="loan dashboard-card"  id="PendingLoan">
+              <div>
+                  <h4>Pending Loan Application</h4>
+                  <p>34</p>
+              </div> 
+          </div>
+          <div class="loan dashboard-card" id="VerifiedLender">
+                <a href="#Verified Users">
+            <div>
+                    <h4>Unverified Users</h4>
+                    <p>24</p>
+                </div>
+            </div>              
+      </section>
+      <section id="box-tables">
+          <div class="full-table">
+              <h1>Pending Loan Application</h1>
+              <div>
+                  <table>
+                      <tr>
+                          <th>Loan ID</th>
+                          <th>Date Created</th>
+                          <th>Email Address</th>
+                          <th>Account Number</th>
+                          <th>Bank Name</th>
+                          <th>Account Status</th>
+                          <th>Repayment period(months)</th>
+                          <th>Loan Request Amount (₦)</th>
+                          <th>Click To Approve </th>
+                      </tr>
+                      <tr>
+                          <td>001</td>
+                          <td>19-Apr-2019</td>
+                          <td>jimia@gmail.com</td>
+                          <td>001-663-3720</td>
+                          <td>First Bank</td>
+                          <td>Pending</td>
+                          <td>12 months</td>
+                          <td>120,000</td>
+                          <td><button class="button_secondary"><a href="UserloanApplication.html">View more</a></button></td>
+                      </tr>
+                      <tr>
+                          <td>002</td>
+                          <td>19-Apr-2019</td>
+                          <td>Fela@gmail.comr</td>
+                          <td>001-456-7773</td>
+                          <td>UBA Bank</td>
+                          <td>Pending</td>
+                          <td>6 months</td>
+                          <td>120,000</td>
+                          <td><button class="button_secondary"><a href="UserloanApplication.html">View more</a></button></td>                       
+                      </tr>
+                      <tr>
+                          <td>003</td>
+                          <td>19-Apr-2019</td>
+                          <td>Donald@gmail.com</td>
+                          <td>001-663-3720</td>
+                          <td>GTBank</td>
+                          <td>Pending</td>
+                          <td>6 months</td>
+                          <td>120,000</td>
+                          <td><button class="button_secondary"><a href="UserloanApplication.html">View more</a></button></td>
+                      </tr>
+                      <tr>
+                          <td>004</td>
+                          <td>19-Apr-2019</td>
+                          <td>Femi@gmail.com</td>
+                          <td>001-663-3720</td>
+                          <td>Access Bank</td>
+                          <td>Pending</td>
+                          <td>6 months</td>
+                          <td>120,000</td>
+                          <td><button class="button_secondary"><a href="UserloanApplication.html">View more</a></button></td>
+                      </tr>
+                      <tr>
+                          <td>005</td>
+                          <td>19-Apr-2019</td>
+                          <td>Gbadamosi@gmail.com</td>
+                          <td>001-663-3720</td>
+                          <td>First Bank</td>
+                          <td>Active</td>
+                          <td>6 months</td>
+                          <td>120,000</td>
+                          <td><button class="button_secondary"><a href="UserloanApplication.html">View more</a></button></td>
+                      </tr>
+                  </table>
+              </div>
+      </section>
+      <section id="box-tables">
+            <div class="full-table">
+                <h1 id="Verified Users">Unverified Users</h1>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Home Address</th>
+                            <th>Work Address</th>
+                            <th>Email Address</th>
+                            <th>Click to Verify</th>
+                        </tr>
+                        <tr>
+                            <td>19-Apr-2019</td>
+                            <td>jimi</td>
+                            <td>Agbaje</td>
+                            <td>Yaba</td>
+                            <td>Victoria Island</td>
+                            <td>jimia@gmail.com</td>
+                            <td><button class="button_secondary"><a href="Verifyuser.html">View more</a></button></td>
+                        </tr>
+                        <tr>
+                            <td>19-Apr-2019</td>
+                            <td>Fela</td>
+                            <td>Durotoye</td>
+                            <td>Surulere</td>
+                            <td>Lekki</td>
+                            <td>Femid@gmail.com</td>
+                            <td><button class="button_secondary"><a href="Verifyuser.html">View more</a></button></td>                     
+                        </tr>
+                        <tr>
+                                <td>19-Apr-2019</td>
+                                <td>Donald</td>
+                                <td>Duke</td>
+                                <td>Ogba</td>
+                                <td>Ilupeju</td>
+                                <td>duked@gmail.com</td>
+                                <td><button class="button_secondary"><a href="Verifyuser.html">View more</a></button></td>                     
+                            </tr>
+                            <tr>
+                                    <td>19-Apr-2019</td>
+                                    <td>Femi</td>
+                                    <td>Sowore</td>
+                                    <td>Badagry</td>
+                                    <td>Ajah</td>
+                                    <td>Femis@gmail.com</td>
+                                    <td><button class="button_secondary"><a href="Verifyuser.html">View more</a></button></td>                   
+                        </tr>
+                        <tr>
+                                <td>19-Apr-2019</td>
+                                <td>Yinka</td>
+                                <td>Gbadamosi/td>
+                                <td>ikorodu</td>
+                                <td>Alausa</td>
+                                <td>YinkaG@gmail.com</td>
+                                <td><button class="button_secondary"><a href="Verifyuser.html">View more</a></button></td>                     
+                            </tr>
+                    </table>
+                </div>
+        </section>
+      <div class="footer">
+        <p>Copyright &copy; 2019 Quickcredit</p>
+      </div>
+    </div>
+  </body>
+</html>
