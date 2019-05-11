@@ -63,5 +63,34 @@ class UserValidate {
       next();
     }
   }
+
+  // eslint-disable-next-line consistent-return
+  static validateSignin(request, response, next) {
+    const { email, password, } = request.body;
+    if (!email || email.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Email is required',
+      });
+    }
+
+    if (email) {
+      const isValid = help.emailValidator(email);
+      if (!isValid) {
+        return response.status(400).json({
+          status: statusCodes.badRequest,
+          error: 'Invalid email address',
+        });
+      }
+    }
+
+    if (!password || password.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Password is required',
+      });
+    }
+    next();
+  }
 }
 export default UserValidate;
