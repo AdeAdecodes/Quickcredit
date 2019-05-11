@@ -22,7 +22,7 @@ route(app);
 
 
 const debug = Debug('http');
-const PORT = process.env.PORT || 4000; // setup PORT to be used
+const PORT = process.env.PORT || 3000; // setup PORT to be used
 app.listen(PORT, () => {
   debug(`Server is running on PORT ${PORT}`);
 });
