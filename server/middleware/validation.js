@@ -92,5 +92,56 @@ class UserValidate {
     }
     next();
   }
+
+  // eslint-disable-next-line consistent-return
+  static adminRole(request, response, next) {
+    const {
+      email, password, isAdmin, type
+    } = request.body;
+    if (!email || email.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Email is required',
+      });
+    }
+    if (email) {
+      const isValid = help.emailValidator(email);
+      if (!isValid) {
+        return response.status(400).json({
+          status: statusCodes.badRequest,
+          error: 'Invalid email address',
+        });
+      }
+    }
+
+    if (!password || password.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Password is required',
+      });
+    }
+
+    if (!type || type.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Type is required',
+      });
+    }
+
+    if (isAdmin !== Boolean) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'isAdmin is required',
+      });
+    }
+
+    if (isAdmin && type === 'admin') {
+      return response.status(403).json({
+        status: statusCodes.forbidden,
+        error: 'Forbidden: Access is denied',
+      });
+    }
+    next();
+  }
 }
 export default UserValidate;
