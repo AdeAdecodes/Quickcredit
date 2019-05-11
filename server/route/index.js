@@ -11,6 +11,7 @@ const route = (app) => {
   // create a user or admin
   app.post(`${API_VERSION}/auth/signup`, userValidate.validateSignup, userController.signup);
   app.post(`${API_VERSION}/auth/signin`, userValidate.validateSignin, userController.signin);
+  app.post(`${API_VERSION}/auth/signin/admin`, userValidate.adminRole, userController.signin);
 };
 
 export default route;
