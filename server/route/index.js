@@ -10,6 +10,7 @@ const API_VERSION = '/api/v1';
 const route = (app) => {
   // create a user or admin
   app.post(`${API_VERSION}/auth/signup`, userValidate.validateSignup, userController.signup);
+  app.post(`${API_VERSION}/auth/signin`, userValidate.validateSignin, userController.signin);
 };
 
 export default route;
