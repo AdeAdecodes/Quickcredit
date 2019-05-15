@@ -68,31 +68,31 @@ class UserController {
       email, password
     } = request.body;
 
-    const userData = {
-      email,
-      password
-    };
-
-    const storedUser = help.searchByEmail(email, data.users);
-    if (storedUser) {
-      if (help.validatePassword(userData.password, storedUser.password)) {
-        const token = help.jwtToken(storedUser);
-        return response.status(200).json({
-          status: statusCodes.success,
-          data: {
-            token,
-            id: storedUser.id,
-            firstName: storedUser.firstName,
-            lastName: storedUser.lastName,
-            email: storedUser.email,
-            message: 'Login successful'
-          },
-        });
-      }
+    const users = help.searchByEmail(email, data.users);
+    const token = help.jwtToken({
+      email, password
+    });
+    if (!users) {
+      return response
+        .status(401)
+        .json({ status: 401, error: 'Sorry, the email/password you provided is incorrect' });
     }
-    return response.status(401).json({
-      status: statusCodes.unAuthorized,
-      error: 'Invalid login details, email or password is wrong',
+    const verifyPassword = help.validatePassword(password, users.password);
+    if (!verifyPassword) {
+      return response
+        .status(401)
+        .json({ status: 401, error: 'Sorry, the email/password you provided is incorrect' });
+    }
+    return response.status(200).json({
+      status: statusCodes.success,
+      data: {
+        token,
+        id: users.id,
+        firstName: users.firstName,
+        lastName: users.lastName,
+        email: users.email,
+        message: 'Login successful',
+      }
     });
   }
 }

@@ -90,7 +90,7 @@ class UserValidate {
       if (!isValid) {
         return response.status(400).json({
           status: statusCodes.badRequest,
-          error: 'Invalid email address',
+          error: 'Invalid login details, email or password is wrong',
         });
       }
     }
