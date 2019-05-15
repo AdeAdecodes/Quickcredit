@@ -1,11 +1,13 @@
-export default {
+import help from '../helpers/help';
+
+const data = {
   users: [
     {
       id: 1,
       email: 'test@tester.com',
       firstName: 'Adeogo',
       lastName: 'Adejana',
-      password: 'Adeogoadejan',
+      password: help.hashPassword('Adeogoadejan'),
       homeAddress: 'Victoria island',
       workAddress: 'yaba',
       phoneNumber: '08066256070',
@@ -17,7 +19,7 @@ export default {
       email: 'jimiagbje@gmail.com',
       firstName: 'jimi',
       lastName: 'agbaje',
-      password: 'jimiagbaje',
+      password: help.hashPassword('jimiagbaje'),
       homeAddress: 'lekki',
       workAddress: 'ketu',
       phoneNumber: '08066256070',
@@ -29,7 +31,7 @@ export default {
       email: 'donaldoduke@gmail.com',
       firstName: 'donaldo',
       lastName: 'duke',
-      password: 'donaldoduke',
+      password: help.hashPassword('donaldoduke'),
       homeAddress: 'yaba',
       workAddress: 'ajah',
       phoneNumber: '08066256070',
@@ -41,7 +43,7 @@ export default {
       email: 'feladurotoye@gmail.com',
       firstName: 'fela',
       lastName: 'durotoye',
-      password: 'feladurotoye',
+      password: help.hashPassword('feladurotoye'),
       homeAddress: 'yaba',
       workAddress: 'yaba',
       phoneNumber: '08066256070',
@@ -50,13 +52,13 @@ export default {
     },
     {
       id: 5,
-      firstName: 'cghhgfjv',
-      lastName: 'fjdikijoifjfi',
-      email: 'jimiagbae@gail.com',
+      firstName: 'seun',
+      lastName: 'oye',
+      email: 'seunoye@gmail.com',
       homeAddress: 'surulere',
       workAddress: 'yaba',
       phoneNumber: '08066256070',
-      passsword: '$2a$10$1Q3MXMvkSQHVG68W2hB8DOy.3VdScV31d5tPdHHxmUGaqWakUEVxm',
+      password: help.hashPassword('password'),
       status: 'unverified'
     },
     {
@@ -67,7 +69,7 @@ export default {
       homeAddress: 'surulere',
       workAddress: 'yaba',
       phoneNumber: '08066256070',
-      passsword: '$2a$10$fEBIMPoJxYxB0aOqx51I6ux7NC8OoOeOsbzeUVe5lro2RFwS2ofuy',
+      password: 'djfdkdf',
       registered: '2019-05-14T09:47:03+01:00',
       status: 'unverified'
     }
@@ -158,3 +160,4 @@ export default {
     },
   ],
 };
+export default data;

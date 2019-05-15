@@ -258,12 +258,24 @@ describe('Testing User Controller', () => {
     });
   });
 });
-
 describe('Testing signin controller', () => {
   /**
      * Test the POST /auth/signin endpoint
      */
   const signinUrl = `${API_VERSION}/auth/signin`;
+  it('should login a user if details are correct', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        email: 'test@tester.com',
+        password: 'Adeogoadejan',
+      })
+      .end((error, response) => {
+        expect(response).to.have.status(200);
+        expect(response.body.status).to.be.equal(200);
+        done(error);
+      });
+  });
   it('should not login a user when the email is missing', (done) => {
     chai.request(app)
       .post(signinUrl)
@@ -299,14 +311,14 @@ describe('Testing signin controller', () => {
     chai.request(app)
       .post(signinUrl)
       .send({
-        email: 'wrongemail@gmail.com',
+        email: 'wronil@gmail.com',
         password: 'password',
       })
       .end((error, response) => {
+        console.log(response.body);
         expect(response.body).to.be.an('object');
         expect(response.body.status).to.equal(401);
         expect(response.body.error).to.be.a('string');
-        expect(response.body.error).to.equal('Invalid login details, email or password is wrong');
         done();
       });
   });
@@ -322,7 +334,7 @@ describe('Testing signin controller', () => {
         expect(response.body).to.be.an('object');
         expect(response.body.status).to.equal(400);
         expect(response.body.error).to.be.a('string');
-        expect(response.body.error).to.equal('Invalid email address');
+        expect(response.body.error).to.equal('Invalid login details, email or password is wrong');
         done();
       });
   });
@@ -331,12 +343,12 @@ describe('Testing signin controller', () => {
     chai.request(app)
       .post(signinUrl)
       .send({
-        email: 'mike@gmail.com',
+        email: 'test@tester',
         password: 'wrong password',
       })
       .end((error, response) => {
         expect(response.body).to.be.an('object');
-        expect(response.body.status).to.equal(401);
+        expect(response.body.status).to.equal(400);
         expect(response.body.error).to.be.a('string');
         expect(response.body.error).to.equal('Invalid login details, email or password is wrong');
         done();
