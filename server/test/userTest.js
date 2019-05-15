@@ -4,6 +4,17 @@ import app from '../app';
 
 chai.use(chaiHttp);
 const API_VERSION = '/api/v1';
+const testUser = {
+  id: 1,
+  email: 'tt@tester.com',
+  firstName: 'Adeogo',
+  lastName: 'Adejana',
+  homeAddress: 'Victoria island',
+  workAddress: 'yaba',
+  phoneNumber: '08066256070',
+  password: 'yabayaba',
+  confirmPassword: 'yabayaba'
+};
 
 describe('Testing User Controller', () => {
   describe('Testing signup controller', () => {
@@ -11,13 +22,36 @@ describe('Testing User Controller', () => {
        * Test the POST /auth/signup endpoint
        */
     const signupUrl = `${API_VERSION}/auth/signup`;
+    it('should register a new user when all the parameters are given', (done) => {
+      chai.request(app)
+        .post(signupUrl)
+        .send(testUser)
+
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response).to.have.status(201);
+          expect(response.body.status).to.equal(201);
+          expect(response.body.data).to.be.a('object');
+          expect(response.body.data).to.have.property('id');
+          expect(response.body.data).to.have.property('firstName');
+          expect(response.body.data).to.have.property('lastName');
+          expect(response.body.data).to.have.property('email');
+          expect(response.body.data).to.have.property('homeAddress');
+          expect(response.body.data).to.have.property('workAddress');
+          expect(response.body.data).to.have.property('phoneNumber');
+
+          done(error);
+        });
+    });
     it('should not register a user when the email is missing', (done) => {
       chai.request(app)
         .post(signupUrl)
         .send({
           firstName: 'Adeogo',
           lastName: 'Adejana',
-          address: 'yaba',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
           password: 'password',
           confirmPassword: 'password',
         })
@@ -26,7 +60,7 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Email is required');
-          done();
+          done(error);
         });
     });
 
@@ -36,7 +70,8 @@ describe('Testing User Controller', () => {
         .send({
           lastName: 'Adeogo',
           email: 'test@test.com',
-          address: 'yaba',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
           password: 'password',
           confirmPassword: 'password',
         })
@@ -45,7 +80,7 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('First name is required');
-          done();
+          done(error);
         });
     });
 
@@ -56,7 +91,9 @@ describe('Testing User Controller', () => {
         .send({
           firstName: 'Adeogo',
           email: 'test@test.com',
-          address: 'yaba',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
           password: 'password',
           confirmPassword: 'password',
         })
@@ -65,10 +102,9 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Last name is required');
-          done();
+          done(error);
         });
     });
-
     it('should not register a user when the password is missing', (done) => {
       chai.request(app)
         .post(signupUrl)
@@ -76,15 +112,81 @@ describe('Testing User Controller', () => {
           firstName: 'Adeogo',
           lastName: 'Adejana',
           email: 'test@tester.com',
-          address: 'yaba',
-          confirmPassword: 'password',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
+          password: '',
         })
         .end((error, response) => {
           expect(response.body).to.be.an('object');
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Password is required');
-          done();
+          done(error);
+        });
+    });
+    it('should not register a user when the home address is missing', (done) => {
+      chai.request(app)
+        .post(signupUrl)
+        .send({
+          firstName: 'Adeogo',
+          lastName: 'Adejana',
+          email: 'test@tester.com',
+          homeAddress: '',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
+          password: 'password',
+          confirmPassword: 'password',
+        })
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(400);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Home Address is required');
+          done(error);
+        });
+    });
+    it('should not register a user when the work address is missing', (done) => {
+      chai.request(app)
+        .post(signupUrl)
+        .send({
+          firstName: 'Adeogo',
+          lastName: 'Adejana',
+          email: 'test@tester.com',
+          homeAddress: 'yaba',
+          workAddress: '',
+          phoneNumber: '08066256070',
+          password: 'password',
+          confirmPassword: 'password',
+        })
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(400);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Work Address is required');
+          done(error);
+        });
+    });
+
+    it('should not register a user when the phone number is missing', (done) => {
+      chai.request(app)
+        .post(signupUrl)
+        .send({
+          firstName: 'Adeogo',
+          lastName: 'Adejana',
+          email: 'test@tester.com',
+          homeAddress: 'yaba',
+          workAddress: 'victoria island',
+          phoneNumber: '',
+          password: 'password',
+          confirmPassword: 'password',
+        })
+        .end((error, response) => {
+          expect(response.body).to.be.an('object');
+          expect(response.body.status).to.equal(400);
+          expect(response.body.error).to.be.a('string');
+          expect(response.body.error).to.equal('Phone Number is required');
+          done(error);
         });
     });
 
@@ -95,7 +197,9 @@ describe('Testing User Controller', () => {
           firstName: 'Adeogo',
           lastName: 'Adejana',
           email: 'test@tester.com',
-          address: 'yaba',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
           password: 'password',
           confirmPassword: 'Passwords do not match',
         })
@@ -104,7 +208,7 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Passwords do not match');
-          done();
+          done(error);
         });
     });
 
@@ -115,7 +219,9 @@ describe('Testing User Controller', () => {
           firstName: 'Adeogo',
           lastName: 'Adejana',
           email: 'test@tester.com',
-          address: 'yaba',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
+          phoneNumber: '08066256070',
           password: 'password',
           confirmPassword: 'password',
         })
@@ -124,7 +230,7 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Email already exists');
-          done();
+          done(error);
         });
     });
 
@@ -134,8 +240,11 @@ describe('Testing User Controller', () => {
         .send({
           firstName: 'Adeogo',
           lastName: 'Adejana',
-          email: 'testester.com',
+          email: 'testett',
+          homeAddress: 'Victoria island',
+          workAddress: 'yaba',
           address: 'yaba',
+          phoneNumber: '08066256070',
           password: 'password',
           confirmPassword: 'password',
         })
@@ -144,7 +253,7 @@ describe('Testing User Controller', () => {
           expect(response.body.status).to.equal(400);
           expect(response.body.error).to.be.a('string');
           expect(response.body.error).to.equal('Invalid email address');
-          done();
+          done(error);
         });
     });
   });
