@@ -1,5 +1,5 @@
 import moment from 'moment';
-import utils from '../helpers/help';
+import help from '../helpers/help';
 import data from '../model/usersData';
 import statusCodes from '../helpers/statuscodes';
 
@@ -19,29 +19,31 @@ class UserController {
   // eslint-disable-next-line consistent-return
   static signup(request, response) {
     const {
-      firstName, lastName, email, password, address
+      firstName, lastName, email, password, homeAddress, workAddress, phoneNumber
     } = request.body;
 
-    if (utils.searchByEmail(email, data.users)) {
+    if (help.searchByEmail(email, data.users)) {
       return response.status(400).json({
         status: statusCodes.badRequest,
         error: 'Email already exists',
       });
     }
     const userData = {
-      id: utils.getNextId(data.users),
+      id: help.getNextId(data.users),
       email,
       firstName,
       lastName,
-      address,
-      password: utils.hashPassword(password),
-      type: 'client',
+      homeAddress,
+      workAddress,
+      phoneNumber,
+      password: help.hashPassword(password),
       registered: moment().format(),
+      status: 'unverified',
       isAdmin: false,
     };
     // store data into database
     data.users.push(userData);
-    const token = utils.jwtToken(userData);
+    const token = help.jwtToken({ email: userData.email, isAdmin: userData.isAdmin });
     response.status(201).json({
       status: statusCodes.created,
       data: {
@@ -50,12 +52,15 @@ class UserController {
         firstName: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,
-        address: userData.address,
+        homeAddress: userData.homeAddress,
+        workAddress: userData.workAddress,
+        phoneNumber: userData.phoneNumber,
+        passsword: userData.password,
         registered: userData.registered,
+        status: userData.status
       },
       message: 'User addded succesfully'
     });
   }
 }
-
 export default UserController;

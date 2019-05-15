@@ -8,7 +8,7 @@ class UserValidate {
   // eslint-disable-next-line consistent-return
   static validateSignup(request, response, next) {
     const {
-      firstName, lastName, email, password, confirmPassword, address
+      firstName, lastName, email, homeAddress, workAddress, phoneNumber, password, confirmPassword,
     } = request.body;
 
     if (!firstName || firstName.trim().length === 0) {
@@ -31,13 +31,24 @@ class UserValidate {
         error: 'Email is required',
       });
     }
-    if (!address || address.trim().length === 0) {
+    if (!homeAddress || homeAddress.trim().length === 0) {
       return response.status(400).json({
         status: statusCodes.badRequest,
-        error: 'Address is required',
+        error: 'Home Address is required',
       });
     }
-
+    if (!workAddress || workAddress.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Work Address is required',
+      });
+    }
+    if (!phoneNumber || phoneNumber.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Phone Number is required',
+      });
+    }
     if (email) {
       const isValid = help.emailValidator(email);
       if (!isValid) {

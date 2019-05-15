@@ -71,6 +71,16 @@ const helpers = {
     const isValid = reg.test(email);
     return isValid;
   },
+  /**
+   * @description - search by id
+   * @param {int} id
+   * @param {object} data
+   * @returns {object} foundId
+   */
+  searchById(searchId, data) {
+    const foundId = data.find(eachData => eachData.id === searchId);
+    return foundId;
+  },
 };
 
 export default helpers;
