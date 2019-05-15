@@ -62,5 +62,38 @@ class UserController {
       message: 'User addded succesfully'
     });
   }
+
+  static signin(request, response) {
+    const {
+      email, password
+    } = request.body;
+
+    const userData = {
+      email,
+      password
+    };
+
+    const storedUser = help.searchByEmail(email, data.users);
+    if (storedUser) {
+      if (help.validatePassword(userData.password, storedUser.password)) {
+        const token = help.jwtToken(storedUser);
+        return response.status(200).json({
+          status: statusCodes.success,
+          data: {
+            token,
+            id: storedUser.id,
+            firstName: storedUser.firstName,
+            lastName: storedUser.lastName,
+            email: storedUser.email,
+            message: 'Login successful'
+          },
+        });
+      }
+    }
+    return response.status(401).json({
+      status: statusCodes.unAuthorized,
+      error: 'Invalid login details, email or password is wrong',
+    });
+  }
 }
 export default UserController;

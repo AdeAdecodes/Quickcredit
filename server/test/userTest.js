@@ -258,3 +258,88 @@ describe('Testing User Controller', () => {
     });
   });
 });
+
+describe('Testing signin controller', () => {
+  /**
+     * Test the POST /auth/signin endpoint
+     */
+  const signinUrl = `${API_VERSION}/auth/signin`;
+  it('should not login a user when the email is missing', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        password: 'password',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.an('object');
+        expect(response.body.status).to.equal(400);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Email is required');
+        done();
+      });
+  });
+
+  it('should not login a user when the password is missing', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        email: 'Adeogo@gmail.com',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.an('object');
+        expect(response.body.status).to.equal(400);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Password is required');
+        done();
+      });
+  });
+
+
+  it('should not login a user when the email does not exist', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        email: 'wrongemail@gmail.com',
+        password: 'password',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.an('object');
+        expect(response.body.status).to.equal(401);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Invalid login details, email or password is wrong');
+        done();
+      });
+  });
+
+  it('should not login a user when the email is invalid', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        email: 'wrongemailgmailcom',
+        password: 'password',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.an('object');
+        expect(response.body.status).to.equal(400);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Invalid email address');
+        done();
+      });
+  });
+
+  it('should not login a user when the password is wrong', (done) => {
+    chai.request(app)
+      .post(signinUrl)
+      .send({
+        email: 'mike@gmail.com',
+        password: 'wrong password',
+      })
+      .end((error, response) => {
+        expect(response.body).to.be.an('object');
+        expect(response.body.status).to.equal(401);
+        expect(response.body.error).to.be.a('string');
+        expect(response.body.error).to.equal('Invalid login details, email or password is wrong');
+        done();
+      });
+  });
+});
