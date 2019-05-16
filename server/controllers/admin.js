@@ -104,6 +104,38 @@ class AdminController {
       data: sortLoan
     });
   }
+    /*
+      * @method getLoansById
+
+       * @description get a specific loan applications in the database
+
+       * @param {object} request - The Request Object
+
+       * @param {object} response - The Response Object
+
+       * @returns {object} JSON API Response
+
+       */
+  // eslint-disable-next-line consistent-return
+  static getLoansById(request, response) {
+    const { id } = request.params;
+    const userId = Number(id);
+
+    const foundId = help.searchById(userId, data.loans);
+
+    if (!foundId) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'No loan Application',
+      });
+    }
+
+    return response.status(200).json({
+      status: statusCodes.success,
+      data: foundId,
+    });
+  }
+
 }
 
 export default AdminController;
