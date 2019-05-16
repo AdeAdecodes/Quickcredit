@@ -19,7 +19,7 @@ class UserController {
   // eslint-disable-next-line consistent-return
   static signup(request, response) {
     const {
-      firstName, lastName, email, password, homeAddress, workAddress, phoneNumber
+      firstName, lastName, email, password, homeAddress, workAddress, phoneNumber, isAdmin
     } = request.body;
 
     if (help.searchByEmail(email, data.users)) {
@@ -39,7 +39,7 @@ class UserController {
       password: help.hashPassword(password),
       registered: moment().format(),
       status: 'unverified',
-      isAdmin: false,
+      isAdmin,
     };
     // store data into database
     data.users.push(userData);
@@ -69,8 +69,9 @@ class UserController {
     } = request.body;
 
     const users = help.searchByEmail(email, data.users);
+    const { admin } = users.isAdmin;
     const token = help.jwtToken({
-      email, password
+      email, admin
     });
     if (!users) {
       return response
