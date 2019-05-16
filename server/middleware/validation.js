@@ -103,5 +103,25 @@ class UserValidate {
     }
     next();
   }
+
+  // eslint-disable-next-line consistent-return
+  static validateStatusChange(request, response, next) {
+    const { status } = request.body;
+    if (!status || status.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'No status selected',
+      });
+    }
+
+    if (status !== 'verified' && status !== 'unverified') {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Wrong status selected',
+      });
+    }
+
+    next();
+  }
 }
 export default UserValidate;
