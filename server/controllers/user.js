@@ -69,10 +69,6 @@ class UserController {
     } = request.body;
 
     const users = help.searchByEmail(email, data.users);
-    const { admin } = users.isAdmin;
-    const token = help.jwtToken({
-      email, admin
-    });
     if (!users) {
       return response
         .status(401)
@@ -84,6 +80,7 @@ class UserController {
         .status(401)
         .json({ status: 401, error: 'Sorry, the email/password you provided is incorrect' });
     }
+    const token = help.jwtToken(users);
     return response.status(200).json({
       status: statusCodes.success,
       data: {
