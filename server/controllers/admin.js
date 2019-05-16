@@ -217,6 +217,34 @@ class AdminController {
       });
     }
   }
+    /**
+
+     * @method getAllPayment
+
+     * @description List all loan applications in the database
+
+     * @param {object} request - The Request Object
+
+     * @param {object} response - The Response Object
+
+     * @returns {object} JSON API Response
+
+     */
+
+    static getAllPayment(request, response) {
+      const paymentData = data.payment;
+      if (paymentData.length < 0) {
+        return response.status(404).json({
+          status: statusCodes.notFound,
+          error: 'No payment record',
+        });
+      }
+      return response.status(200).json({
+        status: statusCodes.success,
+        data: paymentData,
+      });
+    }
+  }
 }
 
 export default AdminController;
