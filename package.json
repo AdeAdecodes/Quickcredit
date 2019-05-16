@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
-    "test": "nyc mocha server/test/*userTest.js --require @babel/register --exit",
+    "test": "nyc mocha server/test/*.js --require @babel/register --exit",
     "build": "babel server -d dist",
     "start-dev": "set DEBUG=development && nodemon --exec babel-node server/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"

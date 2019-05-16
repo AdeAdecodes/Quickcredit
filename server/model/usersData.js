@@ -16,7 +16,7 @@ const data = {
     },
     {
       id: 2,
-      email: 'jimiagbje@gmail.com',
+      email: 'jimiagbaje@gmail.com',
       firstName: 'jimi',
       lastName: 'agbaje',
       password: help.hashPassword('jimiagbaje'),
