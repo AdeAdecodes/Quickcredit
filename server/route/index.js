@@ -1,8 +1,10 @@
 import Debug from 'debug';
 import users from '../controllers/user';
 import admin from '../controllers/admin';
+import loans from '../controllers/loan';
 import user from '../middleware/validation';
 import auth from '../middleware/authValidation';
+import loan from '../middleware/loan_validation';
 
 
 const debug = Debug('quickcredit');
@@ -21,6 +23,8 @@ const route = (app) => {
   app.patch(`${API_VERSION}/users/:email/verify`, auth.authentication, auth.adminRole, user.validateStatusChange, admin.verify);
   // Admin can get users
   app.get(`${API_VERSION}/users`, auth.authentication, auth.adminRole, admin.getAllUsers);
+  //  Users request for loan
+  app.post(`${API_VERSION}/loans`, loan.validateLoanRequest, loans.loanrequest);
 };
 
 export default route;
