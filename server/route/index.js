@@ -17,8 +17,10 @@ const route = (app) => {
   app.post(`${API_VERSION}/auth/signin`, user.validateSignin, users.signin);
   // Admin can login
   app.post(`${API_VERSION}/auth/signin/admin`, auth.authentication, auth.adminRole, users.signin);
-    //  Admin can verify users
-    app.patch(`${API_VERSION}/users/:email/verify`, auth.authentication, auth.adminRole, user.validateStatusChange, admin.verify);
+  //  Admin can verify users
+  app.patch(`${API_VERSION}/users/:email/verify`, auth.authentication, auth.adminRole, user.validateStatusChange, admin.verify);
+  // Admin can get users
+  app.get(`${API_VERSION}/users`, auth.authentication, auth.adminRole, admin.getAllUsers);
 };
 
 export default route;
