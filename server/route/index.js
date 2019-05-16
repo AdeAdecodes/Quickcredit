@@ -31,6 +31,8 @@ const route = (app) => {
   app.get(`${API_VERSION}/loans/:id/`, auth.authentication, auth.adminRole, admin.getLoansById);
   // Admin can Approve or Reject loans
   app.patch(`${API_VERSION}/loan/:id/`, auth.authentication, auth.adminRole, loan.loanStatusChange, admin.loanVerify);
+  //  Users can pay loans
+  app.post(`${API_VERSION}/loans/:id/repayment`, loan.payment, loans.payLoan);
 };
 
 export default route;

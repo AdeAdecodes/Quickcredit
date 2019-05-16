@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import statusCodes from '../helpers/statuscodes';
 
 /**
@@ -122,6 +123,17 @@ class loanValidate {
       });
     }
 
+    next();
+  }
+
+  static payment(request, response, next) {
+    const { amount } = request.body;
+    if (amount === undefined || amount === '' || amount === null) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'amount is required',
+      });
+    }
     next();
   }
 }
