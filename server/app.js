@@ -20,10 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (request, response) => {
   response.status(200).send({ status: 200, message: 'Welcome to Quickcredit API Version 1' });
 });
-app.get('*', (request, response) => {
-  response.status(500).send({ status: 500, message: 'Server error' });
-});
-// routes which should handle request
+// app.get('/', (request, response) => {
+//   response.status(500).send({ status: 500, message: 'Server error' });
+// });
+// routes which should handle endpoints
 route(app);
 
 

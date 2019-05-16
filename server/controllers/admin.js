@@ -36,6 +36,34 @@ class AdminController {
       },
     });
   }
+  /*
+
+     * @method getAllUsers
+
+     * @description List all users in the database
+
+     * @param {object} request - The Request Object
+
+     * @param {object} response - The Response Object
+
+     * @returns {object} JSON API Response
+
+     */
+  // eslint-disable-next-line lines-between-class-members
+  static getAllUsers(request, response) {
+    const userData = data.users;
+
+    if (userData.length < 0) {
+      return response.status(404).json({
+        status: statusCodes.notFound,
+        error: 'No loan Application',
+      });
+    }
+    return response.status(200).json({
+      status: statusCodes.success,
+      data: userData
+    });
+  }
 }
 
 export default AdminController;
