@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import help from '../helpers/help';
 import data from '../model/usersData';
 import statusCodes from '../helpers/statuscodes';
@@ -245,6 +246,5 @@ class AdminController {
       });
     }
   }
-}
 
 export default AdminController;

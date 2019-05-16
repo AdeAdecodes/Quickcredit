@@ -37,6 +37,8 @@ const route = (app) => {
   app.post(`${API_VERSION}/loans/:id/repayment`, loan.payment, loans.payLoan);
     //  Admin can get all repayment
     app.get(`${API_VERSION}/payment/`, auth.authentication, auth.adminRole, admin.getAllPayment);
+     //  Users can view loan repayment history
+  app.get(`${API_VERSION}/loans/:id/repayments`, loans.getPaymentById);
 };
 
 export default route;

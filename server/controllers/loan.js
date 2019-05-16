@@ -59,7 +59,7 @@ class loan {
       },
     });
   }
-   /**
+  /**
    * Pay for loan
    * @param {object} request express request object
    * @param {object} response express response object
@@ -105,6 +105,25 @@ class loan {
     });
   }
 
-}
+  static getPaymentById(request, response) {
+    const { id } = request.params;
+    const userId = Number(id);
+    const paymentDb = data.payment;
 
+    const foundId = paymentDb.filter(paid => (paid.loanId === userId) && (paid.status === 'approved'));
+
+    if (foundId) {
+      return response.status(200).json({
+        status: statusCodes.success,
+        data: foundId,
+        message: `${foundId}`
+      });
+    }
+    return response.status(400).json({
+      status: statusCodes.badRequest,
+      error: 'No payment made',
+      message: `${foundId}`
+    });
+  }
+}
 export default loan;
