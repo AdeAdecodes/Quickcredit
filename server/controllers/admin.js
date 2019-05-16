@@ -165,6 +165,58 @@ class AdminController {
       data: foundId
     });
   }
+   /**
+     * changes loan status
+     * @param {object} request express request object
+     * @param {object} response express response object
+     *
+     * @returns {json} json
+     * @memberof userController
+     */
+
+  // eslint-disable-next-line consistent-return
+  static paymentVerify(request, response) {
+    const { status } = request.body;
+    const { id } = request.params;
+    const { loanId } = request.params;
+    const userId = Number(id);
+    const foundId = help.searchById(userId, data.payment);
+    const loanDb = help.searchById(Number(loanId), data.loans);
+
+    if (!foundId) {
+      return response.status(404).json({
+        status: statusCodes.notFound,
+        error: 'Id does not exists',
+      });
+    }
+    if (loanDb.status !== 'approved') {
+      return response.status(404).json({
+        status: statusCodes.notFound,
+        error: 'Id does not exists',
+      });
+    }
+    if (status === 'declined') {
+      return response.status(404).json({
+        // eslint-disable-next-line no-trailing-spaces
+        status: statusCodes.notFound, 
+        error: 'Payment was declined',
+      });
+    // eslint-disable-next-line no-else-return
+    } else if (status === 'approved') {
+      // eslint-disable-next-line no-unused-expressions
+      foundId.status = status;
+      loanDb.balance -= foundId.recentPayment;
+      loanDb.repaidLoans += foundId.recentPayment;
+      loanDb.loanRepaid = (loanDb.repaidLoans === loanDb.totalPayment);
+      response.status(200).json({
+        status: statusCodes.success,
+        data: {
+          foundId,
+          loanDb
+        }
+      });
+    }
+  }
 }
 
 export default AdminController;
