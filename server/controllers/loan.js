@@ -116,13 +116,11 @@ class loan {
       return response.status(200).json({
         status: statusCodes.success,
         data: foundId,
-        message: `${foundId}`
       });
     }
     return response.status(400).json({
       status: statusCodes.badRequest,
       error: 'No payment made',
-      message: `${foundId}`
     });
   }
 }

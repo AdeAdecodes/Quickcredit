@@ -89,7 +89,7 @@ class AdminController {
 
         status: 200,
 
-        data: loanData // return all loan
+        data: loanData // return all loans
 
       });
     }
