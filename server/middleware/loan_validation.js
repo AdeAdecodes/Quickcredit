@@ -54,5 +54,55 @@ class loanValidate {
     }
     next();
   }
+  
+  static loanQuery(request, response, next) {
+    /* check if query parimeter is empty  return all loan */
+
+    const loanQueryParams = request.query;
+
+    if (Object.keys(loanQueryParams).length === 0) {
+      return next();
+    }
+
+    /**
+
+     * get values from loan query parimenter
+
+     */
+
+    const loanStatus = loanQueryParams.status;
+
+    let loanRepaid = loanQueryParams.repaid;
+
+    if (loanRepaid === 'false') { loanRepaid = false; }
+
+    if (loanRepaid === 'true') { loanRepaid = true; }
+
+    /**
+
+     * validate loan query parimeter if it has
+
+     * object property of status and repaid else
+
+     * throw an error message.
+
+     */
+
+    const errorMessage = {};
+
+    if (!(loanRepaid === true || loanRepaid === false)) {
+      errorMessage.repaid = 'repaid value is required & should be true or false';
+    }
+
+    if (!(loanStatus === 'approved' || loanStatus === 'pending' || loanStatus === 'rejected')) {
+      errorMessage.status = 'status value is required & should be pending, approved, rejected';
+    }
+
+    if (!(Object.keys(errorMessage).length === 0)) {
+      return response.status(422).json(errorMessage);
+    }
+
+    return next();
+  }
 }
 export default loanValidate;
