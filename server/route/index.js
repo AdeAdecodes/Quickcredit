@@ -1,7 +1,9 @@
 import Debug from 'debug';
 import users from '../controllers/user';
+import admin from '../controllers/admin';
 import user from '../middleware/validation';
 import auth from '../middleware/authValidation';
+
 
 const debug = Debug('quickcredit');
 debug('show me here');
@@ -11,8 +13,12 @@ const API_VERSION = '/api/v1';
 const route = (app) => {
   // create a user or admin
   app.post(`${API_VERSION}/auth/signup`, user.validateSignup, users.signup);
+  // User can Login
   app.post(`${API_VERSION}/auth/signin`, user.validateSignin, users.signin);
+  // Admin can login
   app.post(`${API_VERSION}/auth/signin/admin`, auth.authentication, auth.adminRole, users.signin);
+    //  Admin can verify users
+    app.patch(`${API_VERSION}/users/:email/verify`, auth.authentication, auth.adminRole, user.validateStatusChange, admin.verify);
 };
 
 export default route;
