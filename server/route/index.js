@@ -23,7 +23,7 @@ const route = (app) => {
   app.patch(`${API_VERSION}/users/:email/verify`, auth.authentication, auth.adminRole, user.validateStatusChange, admin.verify);
   // Admin can get users
   app.get(`${API_VERSION}/users`, auth.authentication, auth.adminRole, admin.getAllUsers);
-  //  Users request for loan
+  //  A user can request for loan
   app.post(`${API_VERSION}/loans`, loan.validateLoanRequest, loans.loanrequest);
 };
 

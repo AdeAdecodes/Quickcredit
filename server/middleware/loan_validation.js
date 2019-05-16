@@ -1,7 +1,7 @@
 import statusCodes from '../helpers/statuscodes';
 
 /**
- * @class UserValidate
+ * @class loanValidate
  */
 class loanValidate {
   // eslint-disable-next-line consistent-return

@@ -127,7 +127,7 @@ describe('Testing loan Controller', () => {
           lastName: 'Adejana',
           email: 'test@tester.com',
           tenon: '',
-          interest: 1000,
+          interest: 150,
           paymentInstallation: 12000,
           totalPayment: 'totalPayment',
         })

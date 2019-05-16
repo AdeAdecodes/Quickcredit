@@ -8,7 +8,7 @@ import statusCodes from '../helpers/statuscodes';
  */
 class loan {
   /**
-   * User loan request
+   * loan request
    * @param {object} request express request object
    * @param {object} response express response object
    *
