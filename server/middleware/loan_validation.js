@@ -54,7 +54,7 @@ class loanValidate {
     }
     next();
   }
-  
+
   static loanQuery(request, response, next) {
     /* check if query parimeter is empty  return all loan */
 
@@ -103,6 +103,26 @@ class loanValidate {
     }
 
     return next();
+  }
+
+  // eslint-disable-next-line consistent-return
+  static loanStatusChange(request, response, next) {
+    const { status } = request.body;
+    if (!status || status.trim().length === 0) {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'No status selected',
+      });
+    }
+
+    if (status !== 'approved' && status !== 'declined') {
+      return response.status(400).json({
+        status: statusCodes.badRequest,
+        error: 'Wrong status selected',
+      });
+    }
+
+    next();
   }
 }
 export default loanValidate;

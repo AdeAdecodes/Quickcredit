@@ -104,7 +104,8 @@ class AdminController {
       data: sortLoan
     });
   }
-    /*
+
+  /*
       * @method getLoansById
 
        * @description get a specific loan applications in the database
@@ -135,7 +136,35 @@ class AdminController {
       data: foundId,
     });
   }
+  /**
+     * changes loan status
+     * @param {object} request express request object
+     * @param {object} response express response object
+     *
+     * @returns {json} json
+     * @memberof userController
+     */
 
+  // eslint-disable-next-line consistent-return
+  static loanVerify(request, response) {
+    const { status } = request.body;
+    const { id } = request.params;
+    const userId = Number(id);
+
+    const foundId = help.searchById(userId, data.loans);
+    if (!foundId) {
+      return response.status(404).json({
+        status: statusCodes.notFound,
+        error: 'Id does not exists',
+      });
+    }
+
+    foundId.status = status;
+    response.status(200).json({
+      status: statusCodes.success,
+      data: foundId
+    });
+  }
 }
 
 export default AdminController;
