@@ -156,7 +156,7 @@ const data = {
       totalPayment: 40000,
       repaidLoans: 0,
       status: 'pending',
-      loanRepaid: false
+      loanRepaid: true
     },
   ],
 };

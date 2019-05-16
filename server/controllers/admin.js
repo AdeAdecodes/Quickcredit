@@ -64,6 +64,46 @@ class AdminController {
       data: userData
     });
   }
+
+  /**
+
+     * @method getAllLoans
+
+     * @description List all loan applications in the database
+
+     * @param {object} request - The Request Object
+
+     * @param {object} response - The Response Object
+
+     * @returns {object} JSON API Response
+
+     */
+  static getAllLoans(request, response) {
+    const loanData = data.loans;
+    // eslint-disable-next-line no-unused-vars
+    const { status, repaid } = request.query;
+
+    if (Object.keys(request.query).length === 0) { // check if query parimeter is empty
+      return response.status(200).json({
+
+        status: 200,
+
+        data: loanData // return all loan
+
+      });
+    }
+
+    const loanRepaid = JSON.parse(repaid);
+
+    const sortLoan = loanData.filter(debt => debt.loanRepaid === loanRepaid);
+
+    return response.status(200).json({
+
+      status: 200,
+
+      data: sortLoan
+    });
+  }
 }
 
 export default AdminController;
