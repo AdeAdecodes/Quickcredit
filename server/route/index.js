@@ -31,14 +31,14 @@ const route = (app) => {
   app.get(`${API_VERSION}/loans/:id/`, auth.authentication, auth.adminRole, admin.getLoansById);
   // Admin can Approve or Reject loans
   app.patch(`${API_VERSION}/loan/:id/`, auth.authentication, auth.adminRole, loan.loanStatusChange, admin.loanVerify);
-   //  Admin can Approve loan payment
-   app.patch(`${API_VERSION}/payment/:loanId/:id/`,auth.authentication, auth.adminRole, loan.loanStatusChange, admin.paymentVerify);
+  //  Admin can Approve loan payment
+  app.patch(`${API_VERSION}/payment/:email/:id/`, auth.authentication, auth.adminRole, loan.loanStatusChange, admin.paymentVerify);
   //  Users can pay loans
   app.post(`${API_VERSION}/loans/:id/repayment`, loan.payment, loans.payLoan);
-    //  Admin can get all repayment
-    app.get(`${API_VERSION}/payment/`, auth.authentication, auth.adminRole, admin.getAllPayment);
-     //  Users can view loan repayment history
-  app.get(`${API_VERSION}/loans/:id/repayments`, loans.getPaymentById);
+  //  Admin can get all repayment
+  app.get(`${API_VERSION}/payment/`, auth.authentication, auth.adminRole, admin.getAllPayment);
+  //  Users can view loan repayment history
+  app.get(`${API_VERSION}/loans/:id/repayments`, auth.authentication, loans.getPaymentById);
 };
 
 export default route;

@@ -13,8 +13,7 @@ const helpers = {
    * @returns {int} id
    */
   getNextId(data) {
-    const lastId = data[data.length - 1].id;
-    return lastId + 1;
+    return data.length;
   },
 
   /**

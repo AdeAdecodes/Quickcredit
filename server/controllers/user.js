@@ -55,7 +55,6 @@ class UserController {
         homeAddress: userData.homeAddress,
         workAddress: userData.workAddress,
         phoneNumber: userData.phoneNumber,
-        passsword: userData.password,
         registered: userData.registered,
         status: userData.status
       },

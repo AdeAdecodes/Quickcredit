@@ -17,7 +17,7 @@ const authentication = (request, response, next) => {
     request.decode = token;
     next();
   } catch (e) {
-    return response.status(401).json({ status: statusCodes.unAuthorized, error: 'Invalid token!' });
+    return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
   }
 };
 
@@ -26,9 +26,10 @@ const authentication = (request, response, next) => {
       if (!request.decode.isAdmin === true) {
         return response.status(401).json({
           status: statusCodes.unAuthorized,
-          error: 'isAdmin is required',
+          error: 'unauthorized access',
         });
       }
       next();
     };
-export default { authentication, adminRole };
+
+export default { authentication, adminRole, };

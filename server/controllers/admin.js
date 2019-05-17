@@ -179,21 +179,21 @@ class AdminController {
   static paymentVerify(request, response) {
     const { status } = request.body;
     const { id } = request.params;
-    const { loanId } = request.params;
+    const { email } = request.params;
     const userId = Number(id);
-    const foundId = help.searchById(userId, data.payment);
-    const loanDb = help.searchById(Number(loanId), data.loans);
+    const foundId = help.searchById(userId, data.payment); // Get user payment data;
+    const loanDb = help.searchByEmail(email, data.loans); // Get user loan data
 
     if (!foundId) {
       return response.status(404).json({
         status: statusCodes.notFound,
-        error: 'Id does not exists',
+        error: 'payment does not exists',
       });
     }
     if (loanDb.status !== 'approved') {
       return response.status(404).json({
         status: statusCodes.notFound,
-        error: 'Id does not exists',
+        error: 'user not found',
       });
     }
     if (status === 'declined') {
@@ -208,7 +208,7 @@ class AdminController {
       foundId.status = status;
       loanDb.balance -= foundId.recentPayment;
       loanDb.repaidLoans += foundId.recentPayment;
-      loanDb.loanRepaid = (loanDb.repaidLoans === loanDb.totalPayment);
+      loanDb.loanRepaid = loanDb.repaidLoans >= loanDb.totalPayment;
       response.status(200).json({
         status: statusCodes.success,
         data: {
