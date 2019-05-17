@@ -41,7 +41,7 @@ class UserController {
       status: 'unverified',
       isAdmin,
     };
-    // store data into database
+    // store data into the database
     data.users.push(userData);
     const token = help.jwtToken({ email: userData.email, isAdmin: userData.isAdmin });
     response.status(201).json({
