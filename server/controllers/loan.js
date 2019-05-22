@@ -1,13 +1,19 @@
-
-import moment from 'moment';
-import help from '../helpers/help';
-import data from '../model/usersData';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import userData from '../model/usersData';
+import loanData from '../model/loanData';
 import statusCodes from '../helpers/statuscodes';
+
+
+dotenv.config();
+
+const { SECRET } = process.env;
 
 /**
  * @class loanController
  */
-class loan {
+
+class Loan {
   /**
    * User loan request
    * @param {object} request express request object
@@ -15,49 +21,46 @@ class loan {
    *
    * @returns {json} json
    */
-  // eslint-disable-next-line consistent-return
-  static loanrequest(request, response) {
-    const {
-      tenon, email, interest, paymentInstallation, totalPayment
-    } = request.body;
-    const foundUser = help.searchByEmail(email, data.loans);
-    const userDb = data.users;
-    if (foundUser) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
+
+  static async loanRequest(request, response) {
+    const { amount, tenor } = request.body;
+    const header = request.headers.authorization;
+    const token = jwt.verify(header, SECRET);
+    request.decode = token;
+    const { email } = request.decode;
+    const applicant = await userData.searchByEmail(email);
+    const findUser = await loanData.searchByEmail(email);
+    const data = { email, tenor, amount };
+
+
+    if (findUser.rowCount > 0) {
+      return response.status(409).json({
+        status: statusCodes.conflict,
         error: 'Pending Loan Request',
       });
     }
-    const loanData = {
-      id: help.getNextId(data.loans),
-      firstName: userDb.firstName,
-      lastName: userDb.lastName,
-      email,
-      tenon,
-      interest,
-      paymentInstallation,
-      totalPayment,
-      requestDate: moment().format(),
-      status: 'pending',
-      loanRepaid: false
-    };
-    data.loans.push(loanData);
 
-    return response.status(201).json({
-      status: statusCodes.created,
+    const loan = await loanData.createLoan(data);
+    const { firstname, lastname } = applicant.rows[0];
+    const { id, paymentinstallment, status, balance, interest } = loan.rows[0];
+
+    response.status(201).json({
+      status: 201,
       data: {
-        loanId: loanData.id,
-        email: loanData.email,
-        tenon: loanData.tenon,
-        paymentInstallation: loanData.paymentInstallation,
-        interest: loanData.interest,
-        totalPayment: loanData.totalPayment,
-        balance: loanData.totalPayment,
-        requestDate: loanData.requestDate,
-        status: loanData.status,
+        id,
+        firstname,
+        lastname,
+        email,
+        tenor,
+        amount,
+        paymentinstallment,
+        status,
+        balance,
+        interest,
       },
     });
   }
+
   /**
    * Pay for loan
    * @param {object} request express request object
@@ -126,4 +129,4 @@ class loan {
     });
   }
 }
-export default loan;
+export default Loan;

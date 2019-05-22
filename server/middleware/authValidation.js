@@ -31,4 +31,13 @@ const authentication = (request, response, next) => {
       next();
     };
 
-export default { authentication, adminRole, };
+    const userRole = (request, response, next) => {
+      if (request.decode.isAdmin === true) {
+        return response.status(401).json({
+          status: statusCodes.unAuthorized,
+          error: 'unauthorized access',
+        });
+      }
+      next();
+  }
+export default { authentication, adminRole, userRole };

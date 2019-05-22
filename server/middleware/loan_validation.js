@@ -1,45 +1,24 @@
-/* eslint-disable consistent-return */
 import statusCodes from '../helpers/statuscodes';
 
 /**
  * @class loanValidate
  */
+
 class loanValidate {
-  // eslint-disable-next-line consistent-return
   static validateLoanRequest(request, response, next) {
-    const {
-      email, tenon, interest, paymentInstallation, totalPayment,
-    } = request.body;
-    if (email === undefined || email === '' || email === null) {
+    const { tenor, amount } = request.body;
+
+    if (amount === undefined || amount === '' || amount === null) {
       return response.status(400).json({
         status: statusCodes.badRequest,
         error: 'Email is required',
       });
     }
-    if (tenon === undefined || tenon === '' || tenon === null) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
-        error: 'Tenon is required',
-      });
-    }
 
-    if (interest === undefined || interest === '' || interest === null) {
+    if (tenor === undefined || tenor === '' || tenor === null) {
       return response.status(400).json({
         status: statusCodes.badRequest,
-        error: 'Interest is required',
-      });
-    }
-
-    if (paymentInstallation === undefined || paymentInstallation === '' || paymentInstallation === null) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
-        error: 'Payment installament is required',
-      });
-    }
-    if (totalPayment === undefined || totalPayment === '' || totalPayment === null) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
-        error: 'Total payment is required',
+        error: 'Tenor is required',
       });
     }
     next();
