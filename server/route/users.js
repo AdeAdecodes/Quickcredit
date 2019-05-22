@@ -3,9 +3,9 @@ import users from '../controllers/user';
 import user from '../middleware/validation';
 
 const userRoutes = Router();
-const API_VERSION = '/api/v1';
 
 // create a user
 userRoutes.post('/auth/signup', user.validateSignup, users.signUp);
+userRoutes.post('/auth/signin', user.validateSignin, users.signIn);
 
 export default userRoutes;
