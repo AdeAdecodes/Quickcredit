@@ -1,6 +1,7 @@
 import help from '../helpers/help';
 import data from '../model/usersData';
 import statusCodes from '../helpers/statuscodes';
+import db from '../migration/database';
 
 /**
  * @class UserController
@@ -29,6 +30,7 @@ class UserController {
         error: 'email is already taken',
       });
     }
+
     const result = await data.createUser(request.body);
     const { firstname, lastname, homeaddress, workaddress, 
          phonenumber, email, registered, status, isadmin,} = result.rows[0];
@@ -90,6 +92,26 @@ class UserController {
         email,
       }],
       message: `Login successful ${firstname}`,
+    });
+  }
+
+  static async verify(request, response) {
+    const { email } = request.params;
+    const text = 'UPDATE users SET status=$1 WHERE email=$2 RETURNING *;';
+    const param = ['verified', email];
+    const { rows } = await db.query(text, param);
+
+    response.status(200).json({
+      status: 200,
+      data: {
+        email,
+        firstName: rows[0].firstname,
+        lastName: rows[0].lastname,
+        password: rows[0].password,
+        homeAddress: rows[0].homeAddress,
+        workAddress: rows[0].workAddress,
+        status: rows[0].status,
+      },
     });
   }
 }
