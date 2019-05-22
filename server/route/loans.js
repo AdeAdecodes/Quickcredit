@@ -7,4 +7,5 @@ const loanRoutes = Router();
 
 loanRoutes.post('/loans', auth.authentication, auth.userRole, loan.validateLoanRequest, loans.loanRequest);
 loanRoutes.get('/loans', auth.authentication, auth.adminRole, loan.loanQuery, loans.getLoans);
+loanRoutes.get('/loans/:loanId/', auth.authentication, auth.adminRole, loans.getLoan);
 export default loanRoutes;

@@ -92,6 +92,26 @@ class Loan {
     }
   }
 
+  /**
+   * get a loan
+   * @description get a specific loan applications in the database
+   * @param {object} request express request object
+   * @param {object} response express response object
+   *
+   * @returns {json} json
+   * @memberof Loan
+   */
+
+  static async getLoan(request, response) {
+    const { loanId } = request.params;// query loanId in db.
+    const loan = await loanData.getSpecificLoan(loanId);
+
+    response.status(200).json({
+      status: 200,
+      data: loan,
+    });
+  }
+  
   static getPaymentById(request, response) {
     const { id } = request.params;
     const userId = Number(id);
