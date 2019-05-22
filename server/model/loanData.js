@@ -47,5 +47,15 @@ class Loan {
 
     return result;
   }
+
+  static async getSpecificLoan(loanId) {
+    const text = 'SELECT * FROM loans WHERE id=$1;';
+    const { rows } = await db.query(text, [loanId]);
+
+    if (rows.length === 0) {
+      return 'not found';
+    }
+    return rows[0];
+  }
 }
 export default Loan;
