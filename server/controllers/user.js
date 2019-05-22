@@ -114,5 +114,24 @@ class UserController {
       },
     });
   }
+
+  static async getUsers(req, res) {
+    const { status } = req.query;
+
+    if (typeof status === 'undefined') {
+      const { rows } = await db.query('SELECT * FROM users');
+      res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    } else {
+      const text = 'SELECT * FROM users WHERE status=$1';
+      const { rows } = await db.query(text, [status]);
+      res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    }
+  }
 }
 export default UserController;
