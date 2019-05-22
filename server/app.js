@@ -6,11 +6,8 @@ import Debug from 'debug';
 import dotenv from 'dotenv';
 import routes from './route';
 
-
 dotenv.config();
 
-
-// Set up the express app
 const app = express();
 
 app.use(logger('dev'));
@@ -29,13 +26,14 @@ app.use((error, request, response, next) => {
   }
   return next();
 });
-// app.all('*', (request, response) => {
-//   response.status(404).send({ status: 404, message: 'Wrong request' });
-// });
 
+app.all('*', (request, response) => {
+  response.status(404).send({ status: 404, message: 'Wrong request' });
+});
 
 const debug = Debug('http');
 const PORT = process.env.PORT || 3000; // setup PORT to be used
+
 app.listen(PORT, () => {
   debug(`Server is running on PORT ${PORT}`);
 });

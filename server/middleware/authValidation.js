@@ -7,7 +7,6 @@ dotenv.config();
 
 const { SECRET } = process.env;
 
-// eslint-disable-next-line consistent-return
 const authentication = (request, response, next) => {
   try {
     const header = request.headers.authorization;
@@ -15,15 +14,15 @@ const authentication = (request, response, next) => {
 
     const token = jwt.verify(header, SECRET);
     request.decode = token;
+
     next();
   } catch (e) {
     return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
   }
 };
 
-  // eslint-disable-next-line consistent-return
   const adminRole = (request, response, next) => {
-      if (!request.decode.isAdmin === true) {
+      if (!request.decode.isadmin === true) {
         return response.status(401).json({
           status: statusCodes.unAuthorized,
           error: 'unauthorized access',
