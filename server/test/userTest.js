@@ -208,19 +208,6 @@ describe('Testing signin controller', () => {
      * Test the POST /auth/signin endpoint
      */
   const signinUrl = `${API_VERSION}/auth/signin`;
-  it('should login a user if details are correct', (done) => {
-    chai.request(app)
-      .post(signinUrl)
-      .send({
-        email: 'test@tester.com',
-        password: 'Adeogoadejan',
-      })
-      .end((error, response) => {
-        expect(response).to.have.status(200);
-        expect(response.body.status).to.be.equal(200);
-        done(error);
-      });
-  });
   it('should not login a user when the email is missing', (done) => {
     chai.request(app)
       .post(signinUrl)

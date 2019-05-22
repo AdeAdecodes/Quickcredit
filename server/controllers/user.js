@@ -30,47 +30,66 @@ class UserController {
       });
     }
     const result = await data.createUser(request.body);
-    const user = result.rows[0];
-    const token = help.jwtToken(user);
+    const { firstname, lastname, homeaddress, workaddress, 
+         phonenumber, email, registered, status, isadmin,} = result.rows[0];
+    const token = help.jwtToken({ email, isadmin });
 
     return response.status(201).json({
       status: response.statusCode,
       data: {
         token,
-        user,
+        firstname,
+        lastname,
+        homeaddress,
+        workaddress,
+        phonenumber,
+        email,
+        registered,
+        status,
+        isadmin,
       },
-      message: `Registration Successful ${user.firstname}`
+      message: `Registration Successful ${ firstname }`
     });
   }
 
-  static signin(request, response) {
-    const {
-      email, password
-    } = request.body;
+  /**
 
-    const users = help.searchByEmail(email, data.users);
-    if (!users) {
-      return response
-        .status(401)
-        .json({ status: 401, error: 'Sorry, the email/password you provided is incorrect' });
+  * @method signIn
+
+  * @description Logs in a user
+
+  * @param {object} req - The Request Object
+
+  * @param {object} res - The Response Object
+
+  * @returns {object} JSON API Response
+
+  */
+
+  static async signIn(request, response) {
+    const { email, password } = request.body;
+    const result = await data.searchByEmail(email);
+
+    if (result.rowCount < 1 || !help.validatePassword(password, result.rows[0].password)) {
+      return response.status(401).json({
+        status: response.statusCode,
+        error: 'Sorry, the email/password you provided is incorrect',
+      });
     }
-    const verifyPassword = help.validatePassword(password, users.password);
-    if (!verifyPassword) {
-      return response
-        .status(401)
-        .json({ status: 401, error: 'Sorry, the email/password you provided is incorrect' });
-    }
-    const token = help.jwtToken(users);
+
+    const { id, firstname, lastname, isadmin } = result.rows[0];
+    const token = help.jwtToken({ id, email, isadmin });
+
     return response.status(200).json({
       status: statusCodes.success,
-      data: {
+      data: [{
         token,
-        id: users.id,
-        firstName: users.firstName,
-        lastName: users.lastName,
-        email: users.email,
-        message: 'Login successful',
-      }
+        id,
+        firstname,
+        lastname,
+        email,
+      }],
+      message: `Login successful ${firstname}`,
     });
   }
 }
