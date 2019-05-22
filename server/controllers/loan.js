@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import userData from '../model/usersData';
 import loanData from '../model/loanData';
 import statusCodes from '../helpers/statuscodes';
+import db from '../migration/database';
 
 
 dotenv.config();
@@ -61,52 +62,34 @@ class Loan {
     });
   }
 
+
   /**
-   * Pay for loan
+   * get a loans
+   * @description get a all loan applications in the database
    * @param {object} request express request object
    * @param {object} response express response object
    *
    * @returns {json} json
    * @memberof Loan
    */
+  static async getLoans(req, res) {
+    const { status, repaid } = req.query;
 
-  // eslint-disable-next-line consistent-return
-  static payLoan(request, response) {
-    const { amount } = request.body;
-    const { id } = request.params;
-    const userId = Number(id, 0);
-    const amountPaid = Number(amount);
-    const foundId = help.searchById(userId, data.loans);
+    if ((typeof status === 'undefined') && (typeof repaid === 'undefined')) {
+      const { rows } = await db.query('SELECT * FROM loans');
+      res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    } else {
+      const text = 'SELECT * FROM loans WHERE status=$1 AND repaid=$2';
+      const { rows } = await db.query(text, [status, repaid]);
 
-    if (!foundId) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
-        error: 'User does not exists',
+      res.status(200).json({
+        status: 200,
+        data: rows,
       });
     }
-
-    const loanData = {
-      id: help.getNextId(data.payment),
-      createdOn: moment().format(),
-      loanId: id,
-      email: foundId.email,
-      recentPayment: amountPaid,
-      monthlypayment: foundId.paymentInstallation,
-      status: 'Unapproved'
-    };
-    data.payment.push(loanData);
-
-    response.status(200).json({
-      status: statusCodes.success,
-      data: {
-        id: loanData.id,
-        createdOn: loanData.createdOn,
-        loanId: loanData.loanId,
-        email: loanData.email,
-        amountPaid: loanData.recentPayment,
-        status: loanData.status,
-      },
-    });
   }
 
   static getPaymentById(request, response) {
