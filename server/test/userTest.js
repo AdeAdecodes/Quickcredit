@@ -4,17 +4,6 @@ import app from '../app';
 
 chai.use(chaiHttp);
 const API_VERSION = '/api/v1';
-const testUser = {
-  id: 1,
-  email: 'tt@tester.com',
-  firstName: 'Adeogo',
-  lastName: 'Adejana',
-  homeAddress: 'Victoria island',
-  workAddress: 'yaba',
-  phoneNumber: '08066256070',
-  password: 'yabayaba',
-  confirmPassword: 'yabayaba'
-};
 
 describe('Testing User Controller', () => {
   describe('Testing signup controller', () => {
@@ -22,27 +11,6 @@ describe('Testing User Controller', () => {
        * Test the POST /auth/signup endpoint
        */
     const signupUrl = `${API_VERSION}/auth/signup`;
-    it('should register a new user when all the parameters are given', (done) => {
-      chai.request(app)
-        .post(signupUrl)
-        .send(testUser)
-
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response).to.have.status(201);
-          expect(response.body.status).to.equal(201);
-          expect(response.body.data).to.be.a('object');
-          expect(response.body.data).to.have.property('id');
-          expect(response.body.data).to.have.property('firstName');
-          expect(response.body.data).to.have.property('lastName');
-          expect(response.body.data).to.have.property('email');
-          expect(response.body.data).to.have.property('homeAddress');
-          expect(response.body.data).to.have.property('workAddress');
-          expect(response.body.data).to.have.property('phoneNumber');
-
-          done(error);
-        });
-    });
     it('should not register a user when the email is missing', (done) => {
       chai.request(app)
         .post(signupUrl)
@@ -83,7 +51,6 @@ describe('Testing User Controller', () => {
           done(error);
         });
     });
-
 
     it('should not register a user when the last name is missing', (done) => {
       chai.request(app)
@@ -212,28 +179,6 @@ describe('Testing User Controller', () => {
         });
     });
 
-    it('should not register a user when the email already exists', (done) => {
-      chai.request(app)
-        .post(signupUrl)
-        .send({
-          firstName: 'Adeogo',
-          lastName: 'Adejana',
-          email: 'test@tester.com',
-          homeAddress: 'Victoria island',
-          workAddress: 'yaba',
-          phoneNumber: '08066256070',
-          password: 'password',
-          confirmPassword: 'password',
-        })
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Email already exists');
-          done(error);
-        });
-    });
-
     it('should not register a user when the email is not valid', (done) => {
       chai.request(app)
         .post(signupUrl)
@@ -315,7 +260,6 @@ describe('Testing signin controller', () => {
         password: 'password',
       })
       .end((error, response) => {
-        console.log(response.body);
         expect(response.body).to.be.an('object');
         expect(response.body.status).to.equal(401);
         expect(response.body.error).to.be.a('string');

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import help from '../helpers/help';
 import db from '../migration/database';
 
@@ -19,7 +20,7 @@ class User {
 
    */
 
-  static create(data) {
+  static createUser(data) {
     const queryText = `INSERT INTO users (
       firstName,
       lastName,
@@ -35,13 +36,30 @@ class User {
 
 
     const {
-      // eslint-disable-next-line max-len
-      firstName, lastName, homeAddress, workAddress, phoneNumber, email, password, registered, status, isAdmin
+      firstName,
+      lastName,
+      homeAddress,
+      workAddress,
+      phoneNumber,
+      email,
+      password,
     } = data;
+    const hashedPassword = help.hashPassword(password);
+    const registered = moment().format();
+    const status = 'unverified';
+    const isAdmin = false;
 
     const values = [
-      // eslint-disable-next-line max-len
-      firstName, lastName, homeAddress, workAddress, phoneNumber, email, password, registered, status, isAdmin
+      firstName,
+      lastName,
+      homeAddress,
+      workAddress,
+      phoneNumber,
+      email,
+      hashedPassword,
+      registered,
+      status,
+      isAdmin,
     ];
 
     const response = db.query(queryText, values);
@@ -59,10 +77,9 @@ class User {
 
   static searchByEmail(email) {
     const query = 'SELECT * FROM users WHERE email=$1';
+    const result = db.query(query, [email]);
 
-    const response = db.query(query, [email]);
-
-    return response;
+    return result;
   }
 
 
@@ -78,25 +95,6 @@ class User {
     const query = 'SELECT * FROM users WHERE id=$1';
 
     const response = db.query(query, [id]);
-
-    return response;
-  }
-
-
-  /**
-
-   * @param {*} password
-
-   *  @param {*} id
-
-   * @returns {object} user object
-
-   */
-
-  static updatePassword(password, id) {
-    const query = 'UPDATE users SET password = $1 WHERE id = $2';
-
-    const response = db.query(query, [help.hashPassword(password), id]);
 
     return response;
   }

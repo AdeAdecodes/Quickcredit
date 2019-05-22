@@ -5,7 +5,7 @@ const queryString = `
 
   CREATE TABLE IF NOT EXISTS users(
 
-    id BIGSERIAL PRIMARY KEY,      
+    id SERIAL PRIMARY KEY,      
     firstName VARCHAR(128) NOT NULL,
     lastName VARCHAR(128) NOT NULL,
     homeAddress VARCHAR(128) NOT NULL,
