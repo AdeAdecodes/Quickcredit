@@ -241,6 +241,7 @@ body {
     justify-items: center;
     align-items: center;
     text-align: center;
+    margin-top: 60px;
   }
 
   #form-box form {
@@ -281,9 +282,11 @@ body {
   }
 
   .footer {
+    position: fixed;
     width: 100%;
     margin-top: 40px;
-    height: 60px;
+    height: 78px;
+    bottom: 0;
   }
 
   .footer p {
