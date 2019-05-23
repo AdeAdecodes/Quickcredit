@@ -111,25 +111,28 @@ class Loan {
       data: loan,
     });
   }
-  
-  static getPaymentById(request, response) {
-    const { id } = request.params;
-    const userId = Number(id);
-    const paymentDb = data.payment;
 
-    const foundId = paymentDb.filter(paid => (paid.loanId === userId) && (paid.status === 'approved'));
+  static async changeStatus(req, res) {
+    const { status } = req.body;
+    const { loanId } = req.params;
+    const specificLoan = await loanData.getSpecificLoan(loanId);
 
-    if (!foundId) {
-      return response.status(400).json({
-        status: statusCodes.badRequest,
-        error: 'No payment made',
+    if (/^reject$/i.test(status.trim())) {
+      const loanRejectResponse = await loanData.rejectLoan(specificLoan);
 
+      res.status(201).json({
+        status: 201,
+        data: loanRejectResponse,
+      });
+    } else {
+      const loanAcceptResponse = await loanData.acceptLoan(specificLoan);
+
+      res.status(201).json({
+        status: 201,
+        data: loanAcceptResponse,
       });
     }
-    return response.status(200).json({
-      status: statusCodes.success,
-      data: foundId,
-    });
   }
 }
 export default Loan;
+

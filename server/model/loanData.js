@@ -57,5 +57,33 @@ class Loan {
     }
     return rows[0];
   }
+
+  static async rejectLoan(loan) {
+    const text = 'UPDATE loans SET status=$1 WHERE id=$2 RETURNING *;';
+    const { rows } = await db.query(text, ['rejected', loan.id]);
+    const data = {
+      loanId: rows[0].id,
+      loanAmount: rows[0].amount,
+      tenor: rows[0].tenor,
+      status: rows[0].status,
+      monthlyInstallment: rows[0].paymentinstallment,
+      interest: rows[0].interest,
+    };
+    return data;
+  }
+
+  static async acceptLoan(loan) {
+    const text = 'UPDATE loans SET status=$1 WHERE id=$2 RETURNING *;';
+    const { rows } = await db.query(text, ['approved', loan.id]);
+    const data = {
+      loanId: rows[0].id,
+      loanAmount: rows[0].amount,
+      tenor: rows[0].tenor,
+      status: rows[0].status,
+      monthlyInstallment: rows[0].paymentinstallment,
+      interest: rows[0].interest,
+    };
+    return data;
+  }
 }
 export default Loan;
