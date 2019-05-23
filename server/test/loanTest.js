@@ -5,11 +5,8 @@ import app from '../app';
 chai.use(chaiHttp);
 const API_VERSION = '/api/v1';
 const testUser = {
-  email: 'tt@tester.com',
-  tenon: 4,
-  interest: 1000,
-  paymentInstallation: 12000,
-  totalPayment: 120000,
+  tenor: 4,
+  amount: 1000,
 };
 
 describe('Testing loan Controller', () => {
@@ -18,111 +15,31 @@ describe('Testing loan Controller', () => {
        * Test the POST /auth/signup endpoint
        */
     const loanUrl = `${API_VERSION}/loans`;
-    it('should create a new loan when all the parameters are given', (done) => {
-      chai.request(app)
-        .post(loanUrl)
-        .send(testUser)
-
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response).to.have.status(201);
-          expect(response.body.status).to.equal(201);
-          expect(response.body.data).to.be.a('object');
-          expect(response.body.data).to.have.property('email');
-          expect(response.body.data).to.have.property('tenon');
-          expect(response.body.data).to.have.property('interest');
-          expect(response.body.data).to.have.property('paymentInstallation');
-
-          done(error);
-        });
-    });
-    it('should not create a new loan request when the email is missing', (done) => {
+    it('should not create a new loan request when the tenor is missing', (done) => {
       chai.request(app)
         .post(loanUrl)
         .send({
-          tenon: 4,
-          interest: 1000,
-          paymentInstallation: 12000,
-          totalPayment: 'totalPayment',
+          tenor: '',
+          amount: 1500,
         })
         .end((error, response) => {
           expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
+          expect(response.body.status).to.equal(401);
           expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Email is required');
           done(error);
         });
     });
-    it('should not create a new loan request  when the totalPayment is missing', (done) => {
+    it('should not create a new loan request when the amount is missing', (done) => {
       chai.request(app)
         .post(loanUrl)
         .send({
-          email: 'test@tester.com',
-          tenon: 4,
-          interest: 1000,
-          paymentInstallation: 12000,
-          totalPayment: '',
+          tenor: 1000,
+          amount: '',
         })
         .end((error, response) => {
           expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
+          expect(response.body.status).to.equal(401);
           expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Total payment is required');
-          done(error);
-        });
-    });
-    it('should not create a new loan request  when the tenon is missing', (done) => {
-      chai.request(app)
-        .post(loanUrl)
-        .send({
-          email: 'test@tester.com',
-          tenon: '',
-          interest: 150,
-          paymentInstallation: 12000,
-          totalPayment: 'totalPayment',
-        })
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Tenon is required');
-          done(error);
-        });
-    });
-    it('should not create a new loan request when the interest is missing', (done) => {
-      chai.request(app)
-        .post(loanUrl)
-        .send({
-          email: 'test@tester.com',
-          tenon: 1000,
-          interest: '',
-          paymentInstallation: 12000,
-          totalPayment: 'totalPayment',
-        })
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Interest is required');
-          done(error);
-        });
-    });
-
-    it('should not create a new loan request  when the payment installation is missing', (done) => {
-      chai.request(app)
-        .post(loanUrl)
-        .send({
-          email: 'test@tester.com',
-          tenon: 1000,
-          interest: 4,
-          paymentInstallation: '',
-          totalPayment: 'totalPayment',
-        })
-        .end((error, response) => {
-          expect(response.body).to.be.an('object');
-          expect(response.body.status).to.equal(400);
-          expect(response.body.error).to.be.a('string');
-          expect(response.body.error).to.equal('Payment installament is required');
           done(error);
         });
     });

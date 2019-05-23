@@ -4,11 +4,15 @@ env:
 language: node_js
 node_js: 
   - '10'
+services:
+  - postgresql
 
 cache:
   directories:
     - "node_modules"
 before_script:
+  - psql -c "CREATE DATABASE testing_db;" -U postgres
+  - psql -c "CREATE USER quickcredit WITH PASSWORD 'barcelona';" -U postgres
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build

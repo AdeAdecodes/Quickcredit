@@ -32,8 +32,8 @@ class UserController {
     }
 
     const result = await data.createUser(request.body);
-    const { firstname, lastname, homeaddress, workaddress, 
-         phonenumber, email, registered, status, isadmin,} = result.rows[0];
+    const { firstname, lastname, homeaddress, workaddress,
+      phonenumber, email, registered, status, isadmin,} = result.rows[0];
     const token = help.jwtToken({ email, isadmin });
 
     return response.status(201).json({
@@ -54,18 +54,16 @@ class UserController {
     });
   }
 
+
   /**
-
-  * @method signIn
-
+  * @method SignIn
+  *
   * @description Logs in a user
-
-  * @param {object} req - The Request Object
-
-  * @param {object} res - The Response Object
-
-  * @returns {object} JSON API Response
-
+  *
+  * @param {*} request - The Request Object
+  * @param {*} response - - The Request Object
+  *
+  * @return {} JSON API Response
   */
 
   static async signIn(request, response) {

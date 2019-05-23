@@ -9,16 +9,16 @@ class loanValidate {
     const { tenor, amount } = request.body;
 
     if (amount === undefined || amount === '' || amount === null) {
-      return response.status(400).json({
+      return response.status(404).json({
         status: statusCodes.badRequest,
-        error: 'Email is required',
+        error: 'Amout is not found',
       });
     }
 
     if (tenor === undefined || tenor === '' || tenor === null) {
-      return response.status(400).json({
+      return response.status(404).json({
         status: statusCodes.badRequest,
-        error: 'Tenor is required',
+        error: 'Tenor is not found',
       });
     }
     next();

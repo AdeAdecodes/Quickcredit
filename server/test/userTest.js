@@ -238,22 +238,6 @@ describe('Testing signin controller', () => {
       });
   });
 
-
-  it('should not login a user when the email does not exist', (done) => {
-    chai.request(app)
-      .post(signinUrl)
-      .send({
-        email: 'wronil@gmail.com',
-        password: 'password',
-      })
-      .end((error, response) => {
-        expect(response.body).to.be.an('object');
-        expect(response.body.status).to.equal(401);
-        expect(response.body.error).to.be.a('string');
-        done();
-      });
-  });
-
   it('should not login a user when the email is invalid', (done) => {
     chai.request(app)
       .post(signinUrl)
