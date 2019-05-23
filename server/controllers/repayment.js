@@ -109,5 +109,16 @@ class RepaymentController {
       });
     }
   }
+
+  static async getRepayHistory(req, res) {
+    const { loanId } = req.params;
+    const text = 'SELECT * FROM repayments WHERE loanid=$1;';
+    const { rows } = await db.query(text, [loanId]);
+
+    res.status(200).json({
+      status: 200,
+      data: rows,
+    });
+  }
 }
 export default RepaymentController;
