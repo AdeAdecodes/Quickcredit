@@ -59,7 +59,7 @@ body {
     overflow: hidden;
     margin: 60px auto 0 auto;
     padding: 10px 0px 0px 80px;
-    background: #dfe7fd;
+    background: #dfe7fd; 
   }
   .container h1 {
     font-family: "Lato", Helvetica, sans-serif;
@@ -114,19 +114,22 @@ body {
     font-family: "Lato", Helvetica, sans-serif;
   }
   .footer {
+    position: fixed;
     width: 100%;
+    padding: 10px;
     margin-top: 40px;
     height: 60px;
+    background-color: #dfe7fd;
+    bottom: 0;
   }
 
   .footer p {
-    padding: 20px;
     text-align: center;
     font-size: 17px;
     font-weight: bold;
-    background-color: #dfe7fd;
     color: #36405e;
   }
+
 }
 /*Responsive*/
 @media (max-width: 700px) {
