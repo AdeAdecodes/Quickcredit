@@ -135,4 +135,3 @@ class Loan {
   }
 }
 export default Loan;
-

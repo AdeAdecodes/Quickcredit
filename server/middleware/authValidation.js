@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import statusCodes from '../helpers/statuscodes';
@@ -22,22 +21,18 @@ const authentication = (request, response, next) => {
 };
 
   const adminRole = (request, response, next) => {
-      if (!request.decode.isadmin === true) {
-        return response.status(401).json({
-          status: statusCodes.unAuthorized,
-          error: 'unauthorized access',
-        });
-      }
-      next();
+    try {
+      if (request.decode.isadmin === true) return next();
+    } catch (e) {
+      return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
+    }
     };
 
     const userRole = (request, response, next) => {
-      if (request.decode.isAdmin === true) {
-        return response.status(401).json({
-          status: statusCodes.unAuthorized,
-          error: 'unauthorized access',
-        });
-      }
-      next();
-  }
+      try {
+      if (request.decode.isadmin === false) return next();
+    } catch (e) {
+      return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
+    }
+  };
 export default { authentication, adminRole, userRole };
