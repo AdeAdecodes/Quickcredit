@@ -12,7 +12,7 @@ Quickcredit is an online lending platform that provides short term soft loans to
 helps solve problems of financial inclusion as a way to alleviate poverty and empower low
 income earners.
 
-The application' UI template is on github pages [here](https://hardecx.github.io/UI/index.html)
+The application UI template is on github pages [here](https://hardecx.github.io/UI/index.html)
 
 ## Implemented Features
 
