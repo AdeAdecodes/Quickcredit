@@ -3,7 +3,6 @@
 [![npm version](https://badge.fury.io/js/express.svg)](https://badge.fury.io/js/express)
 [![Build Status](https://travis-ci.org/hardecx/Quickcredit.svg?branch=develop)](https://travis-ci.org/hardecx/Quickcredit)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d88297d66181f684ef84/maintainability)](https://codeclimate.com/github/hardecx/Quickcredit/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/d88297d66181f684ef84/test_coverage)](https://codeclimate.com/github/hardecx/Quickcredit/test_coverage)
 [![Coverage Status](https://coveralls.io/repos/github/hardecx/Quickcredit/badge.svg?branch=develop)](https://coveralls.io/github/hardecx/Quickcredit?branch=develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -21,6 +20,7 @@ The application' UI template is on github pages [here](https://hardecx.github.io
 - Users can login.
 - User can apply for loan.
 - User can view loan repayment history
+- User can pay loan
 - Admin can mark a client as verified, after confirming his/her home and work address.
 - Admin can view a specific loan application.
 - Admin can approve or reject a client's loan application.
@@ -28,6 +28,7 @@ The application' UI template is on github pages [here](https://hardecx.github.io
 - Admin can view all loan applications.
 - Admin can view all current loans (not fully repaid).
 - Admin can view all repaid loans.
+- Admin can approve or reject a client's loan payment.
 - User can reset password.
 
 ---
@@ -54,6 +55,26 @@ The application' UI template is on github pages [here](https://hardecx.github.io
 
 ---
 
+|   METHOD      |  DESCRIPTION   | ENDPOINT                    |
+| ------------- | -------------- |-----------------------------|
+|   POST        | Create user account |`POST /auth/signup`          |
+|   POST         | Login a user  |`POST /auth/signin`|
+|   PATCH        | Mark a user as verified.|`PATCH /users/<:user-email>/verify`          |
+| GET |Get all USERS |`GET /users.`|
+| GET |View all loan users unapproved.|`GET /users?status=unapproved`|
+| GET |View all loan users approved.|`GET /users?status=approved`|
+|   GET         | Get all current loans that are not fully repaid.|`GET /loans?status=approved&repaid=false`|
+|   GET         |Get a specific loan application. |`GET /loans/<:loan-id>`|
+|   GET         |Get all repaid loans.|`GET /loans?status=approved&repaid=true`|
+| GET |Get all loan applications|`GET /loans.`|
+| GET |View loan repayment history.|`GET /loans/<:loan-id>/repayments`|
+| GET |View all loan repayment history.|`GET /repayments`|
+| GET |View all loan repayment unapproved.|`GET /repayments?status=unapproved`|
+| GET |View all loan repayment approved.|`GET /repayments?status=unapproved`|
+| POST | Create a loan application|`POST /loans`|
+| PATCH |Approve or reject a loan application. Specify the status in the request’s body.|`PATCH /loans/<:loan-id>`|
+| POST |User can pay loan.|`POST /loans/repayment`|
+
 ## Installation
 
 #### Clone this repository and navigate into it.
@@ -75,3 +96,5 @@ The application' UI template is on github pages [here](https://hardecx.github.io
 `npm start`
 
 ---
+### AUTHOR
+ADEOGO ADEJANA
