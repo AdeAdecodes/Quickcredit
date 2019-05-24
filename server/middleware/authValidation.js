@@ -33,7 +33,9 @@ const adminRole = (request, response, next) => {
 
 const userRole = (request, response, next) => {
   try {
-    if (request.decode.isadmin === false) return next();
+    if (request.decode.isadmin === false) {
+      return next();
+    } return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' })
   } catch (e) {
     return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
   }
