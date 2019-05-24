@@ -99,6 +99,10 @@ class UserController {
     const param = ['verified', email];
     const { rows } = await db.query(text, param);
 
+    if (rows.length === 0) {
+      return response.status(404).json({ status: statusCodes.unAuthorized, error: 'User with paramter not found' });
+    } 
+
     response.status(200).json({
       status: 200,
       data: {

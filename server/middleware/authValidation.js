@@ -20,19 +20,22 @@ const authentication = (request, response, next) => {
   }
 };
 
-  const adminRole = (request, response, next) => {
-    try {
-      if (request.decode.isadmin === true) return next();
-    } catch (e) {
-      return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
-    }
-    };
+const adminRole = (request, response, next) => {
+  try {
+    if (request.decode.isadmin === true) {
+      return next();
+    } return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
+  } catch (e) {
+    return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
+  }
 
-    const userRole = (request, response, next) => {
-      try {
-      if (request.decode.isadmin === false) return next();
-    } catch (e) {
-      return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
-    }
-  };
+};
+
+const userRole = (request, response, next) => {
+  try {
+    if (request.decode.isadmin === false) return next();
+  } catch (e) {
+    return response.status(401).json({ status: statusCodes.unAuthorized, error: 'unauthorized access!' });
+  }
+};
 export default { authentication, adminRole, userRole };
