@@ -41,6 +41,9 @@ The application' UI template is on github pages [here](https://hardecx.github.io
 ## Heroku App deployment link
 [Backend](https://bootquickcredit.herokuapp.com/)
 
+## Api documentation
+[swagger](https://bootquickcredit.herokuapp.com/swagger/)
+
 ## Technologies to be Used
 
 - [NodeJS](https://nodejs.org/)
