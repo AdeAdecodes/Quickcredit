@@ -2,8 +2,10 @@ import '@babel/polyfill';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
 import Debug from 'debug';
 import dotenv from 'dotenv';
+import swaggerDocument from '../swagger.json';
 import routes from './route';
 
 dotenv.config();
@@ -17,6 +19,9 @@ app.use('/api/v1', routes);
 app.get('/', (request, response) => {
   response.status(200).send({ status: 200, message: 'Welcome to Quickcredit API Version 1' });
 });
+// Render quick credit documentation
+
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((error, request, response, next) => {
   if (error) {
     return response.status(500).json({
